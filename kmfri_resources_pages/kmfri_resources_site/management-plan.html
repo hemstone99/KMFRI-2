@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Plan | KMFRI</title>
+    <style>
+        /* Main Styles */
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-blue: #004d99;
+            --accent-teal: #008080;
+            --light-bg: #f5f9fc;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --highlight-yellow: #fff9e6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/management-plan-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: #e9ecef;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        /* Main Content */
+        .management-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-teal);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Introduction Section */
+        .intro-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+        
+        .intro-section p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background-color: var(--highlight-yellow);
+            border-left: 4px solid var(--accent-teal);
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        /* Management Framework */
+        .framework {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .framework-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--accent-teal);
+        }
+        
+        .framework-icon {
+            font-size: 2.5rem;
+            color: var(--accent-teal);
+            margin-bottom: 20px;
+        }
+        
+        .framework-card h3 {
+            color: var(--secondary-blue);
+            margin-top: 0;
+        }
+        
+        /* Organizational Structure */
+        .org-structure {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .org-chart {
+            max-width: 100%;
+            height: auto;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Key Documents */
+        .documents-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+        
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .document-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            border-left: 4px solid var(--accent-teal);
+        }
+        
+        .document-category {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .document-title {
+            font-size: 1.2rem;
+            color: var(--secondary-blue);
+            margin: 10px 0;
+        }
+        
+        .document-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .document-download {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .document-download:hover {
+            background-color: var(--accent-teal);
+        }
+        
+        /* Performance Section */
+        .performance-section {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .performance-item {
+            padding: 20px;
+        }
+        
+        .performance-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .performance-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .performance-label {
+            font-size: 1rem;
+        }
+        
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--accent-teal);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .performance-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-section, .framework-card, .documents-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb container">
+        <a href="index.html">Home</a> &gt; <a href="about.html">About Us</a> &gt; <span>Management Plan</span>
+    </div>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Institutional Management Plan</h1>
+            <p>Strategic framework for effective governance and operational excellence</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="management-content container">
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <h2>KMFRI Management Framework</h2>
+            <p>The Kenya Marine and Fisheries Research Institute (KMFRI) Management Plan provides the strategic framework for achieving our mandate of conducting marine and fisheries research. This plan outlines our governance structure, management systems, and operational processes to ensure effective delivery of our services.</p>
+            
+            <div class="highlight-box">
+                <h3>Management Vision</h3>
+                <p>"To be a world-class marine research institution through excellent governance, innovative management practices, and efficient resource utilization for sustainable development of Kenya's blue economy."</p>
+            </div>
+            
+            <p>This management plan aligns with Kenya's Constitution, Vision 2030, the Marine Fisheries Research Policy, and international best practices in institutional management of research organizations.</p>
+        </section>
+        
+        <!-- Management Framework -->
+        <div class="section-title">
+            <h2>Our Management Framework</h2>
+            <p>Key pillars of our institutional management approach</p>
+        </div>
+        
+        <div class="framework">
+            <div class="framework-card">
+                <div class="framework-icon">🏛️</div>
+                <h3>Governance Structure</h3>
+                <p>Clear delineation of roles between the Board of Management, Director General, and various committees ensuring strategic oversight and operational efficiency.</p>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-icon">📈</div>
+                <h3>Strategic Planning</h3>
+                <p>Comprehensive planning processes with 5-year strategic plans, annual work plans, and performance contracts aligned to national development goals.</p>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-icon">👥</div>
+                <h3>Human Resource Management</h3>
+                <p>Policies and systems for recruitment, capacity building, performance management, and staff welfare to maintain a motivated workforce.</p>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-icon">💰</div>
+                <h3>Financial Management</h3>
+                <p>Robust financial systems ensuring accountability, transparency, and optimal utilization of resources in compliance with public finance regulations.</p>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-icon">🔬</div>
+                <h3>Research Management</h3>
+                <p>Systems for research prioritization, project management, quality assurance, and knowledge dissemination to maximize research impact.</p>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-icon">🤝</div>
+                <h3>Stakeholder Engagement</h3>
+                <p>Framework for partnerships with government agencies, research institutions, private sector, and local communities for collaborative impact.</p>
+            </div>
+        </div>
+        
+        <!-- Organizational Structure -->
+        <div class="section-title">
+            <h2>Organizational Structure</h2>
+            <p>Our governance and management hierarchy</p>
+        </div>
+        
+        <div class="org-structure">
+            <p>KMFRI operates under a clearly defined organizational structure that separates governance from management while ensuring effective coordination between research, administration, and support functions.</p>
+            <img src="images/kmfri-org-chart.png" alt="KMFRI Organizational Structure" class="org-chart">
+            <p>The structure comprises the Board of Management at the governance level, the Director General's office for strategic leadership, and four technical directorates overseeing research programs, supported by administrative departments.</p>
+        </div>
+        
+        <!-- Key Documents -->
+        <section class="documents-section">
+            <h2>Key Management Documents</h2>
+            <p>Our management framework is supported by the following key documents:</p>
+            
+            <div class="documents-grid">
+                <div class="document-card">
+                    <span class="document-category">Policy</span>
+                    <h3 class="document-title">Corporate Governance Manual</h3>
+                    <div class="document-meta">Version 2.1 | Updated: Jan 2024</div>
+                    <p>Guidelines for governance practices, board operations, and institutional oversight.</p>
+                    <a href="management/governance-manual.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <div class="document-card">
+                    <span class="document-category">Plan</span>
+                    <h3 class="document-title">Strategic Plan 2023-2027</h3>
+                    <div class="document-meta">Approved: June 2023</div>
+                    <p>Five-year roadmap for achieving KMFRI's mandate and strategic objectives.</p>
+                    <a href="management/strategic-plan.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <div class="document-card">
+                    <span class="document-category">Manual</span>
+                    <h3 class="document-title">Financial Procedures Manual</h3>
+                    <div class="document-meta">Version 3.0 | Updated: Mar 2024</div>
+                    <p>Detailed procedures for budgeting, procurement, and financial reporting.</p>
+                    <a href="management/finance-manual.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <div class="document-card">
+                    <span class="document-category">Policy</span>
+                    <h3 class="document-title">Human Resource Policy</h3>
+                    <div class="document-meta">Revised: Dec 2023</div>
+                    <p>Comprehensive HR policies covering all aspects of staff management.</p>
+                    <a href="management/hr-policy.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <div class="document-card">
+                    <span class="document-category">Manual</span>
+                    <h3 class="document-title">Research Management Manual</h3>
+                    <div class="document-meta">Version 1.5 | Updated: Feb 2024</div>
+                    <p>Guidelines for research planning, implementation, and quality assurance.</p>
+                    <a href="management/research-manual.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <div class="document-card">
+                    <span class="document-category">Plan</span>
+                    <h3 class="document-title">Performance Contract</h3>
+                    <div class="document-meta">FY 2023/2024</div>
+                    <p>Annual performance targets and indicators aligned to government priorities.</p>
+                    <a href="management/performance-contract.pdf" class="document-download">Download PDF</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Performance Section -->
+        <div class="performance-section">
+            <h2 style="margin-top: 0;">Our Management Performance</h2>
+            <p>Key indicators demonstrating our management effectiveness</p>
+            
+            <div class="performance-grid">
+                <div class="performance-item">
+                    <div class="performance-icon">📅</div>
+                    <div class="performance-number">100%</div>
+                    <div class="performance-label">On-time submission of annual reports</div>
+                </div>
+                
+                <div class="performance-item">
+                    <div class="performance-icon">✅</div>
+                    <div class="performance-number">95%</div>
+                    <div class="performance-label">Performance contract targets met</div>
+                </div>
+                
+                <div class="performance-item">
+                    <div class="performance-icon">💼</div>
+                    <div class="performance-number">150+</div>
+                    <div class="performance-label">Trained staff in management programs</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Download Section -->
+        <div class="download-section">
+            <h2>Download the Full Management Plan</h2>
+            <p>For complete details of our management framework, policies, and procedures.</p>
+            <a href="documents/kmfri-management-plan.pdf" class="download-btn">Download Management Plan (PDF)</a>
+        </div>
+    </main>
+</body>
+</html>

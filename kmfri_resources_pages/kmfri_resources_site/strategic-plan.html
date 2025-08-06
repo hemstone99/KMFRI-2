@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Plan | KMFRI</title>
+    <style>
+        /* Main Styles */
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-blue: #004d99;
+            --accent-teal: #008080;
+            --light-bg: #f5f9fc;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/ocean-research-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: #e9ecef;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        /* Strategic Plan Content */
+        .strategic-plan {
+            padding: 60px 0;
+        }
+        
+        .plan-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .plan-section h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--accent-teal);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .vision-mission {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .vision, .mission {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+        }
+        
+        .vision h3, .mission h3 {
+            color: var(--secondary-blue);
+            margin-top: 0;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            color: var(--accent-teal);
+            margin-bottom: 15px;
+        }
+        
+        /* Strategic Pillars */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .pillar {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .pillar:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pillar h3 {
+            color: var(--secondary-blue);
+            margin-top: 0;
+        }
+        
+        .pillar-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent-teal);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+        }
+        
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: var(--secondary-blue);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--secondary-blue);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--accent-teal);
+            color: white;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .vision-mission {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb container">
+        <a href="index.html">Home</a> &gt; <span>Strategic Plan</span>
+    </div>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Strategic Plan 2023-2027</h1>
+            <p>Charting the course for marine and fisheries research excellence</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="strategic-plan container">
+        <!-- Introduction -->
+        <section class="plan-section">
+            <h2>Our Strategic Direction</h2>
+            <p>The Kenya Marine and Fisheries Research Institute (KMFRI) presents its Strategic Plan for the period 2023-2027, outlining our commitment to advancing marine and freshwater research, sustainable fisheries management, and aquatic ecosystem conservation. This plan aligns with Kenya's Vision 2030 and the Sustainable Development Goals (SDGs), particularly SDG 14 - Life Below Water.</p>
+        </section>
+        
+        <!-- Vision & Mission -->
+        <div class="vision-mission">
+            <div class="vision">
+                <div class="icon">🌊</div>
+                <h3>Our Vision</h3>
+                <p>A prosperous nation with healthy aquatic ecosystems supporting sustainable blue economy.</p>
+            </div>
+            
+            <div class="mission">
+                <div class="icon">🔬</div>
+                <h3>Our Mission</h3>
+                <p>To generate knowledge and innovations for sustainable utilization and management of aquatic resources through research, capacity building and partnerships.</p>
+            </div>
+        </div>
+        
+        <!-- Strategic Pillars -->
+        <section class="plan-section">
+            <h2>Strategic Pillars</h2>
+            <p>Our strategic plan is built on five key pillars that will guide our research and operations over the next five years:</p>
+            
+            <div class="pillars">
+                <div class="pillar">
+                    <h3><span class="pillar-number">1</span>Research Excellence</h3>
+                    <p>Enhance scientific research in marine and freshwater ecosystems to generate knowledge and innovations for sustainable development.</p>
+                </div>
+                
+                <div class="pillar">
+                    <h3><span class="pillar-number">2</span>Policy Influence</h3>
+                    <p>Provide evidence-based policy advice to support decision-making in marine and fisheries management.</p>
+                </div>
+                
+                <div class="pillar">
+                    <h3><span class="pillar-number">3</span>Capacity Building</h3>
+                    <p>Develop human capital and institutional capacity for marine and fisheries research and management.</p>
+                </div>
+                
+                <div class="pillar">
+                    <h3><span class="pillar-number">4</span>Stakeholder Engagement</h3>
+                    <p>Strengthen partnerships with communities, government, academia and private sector for collaborative research and development.</p>
+                </div>
+                
+                <div class="pillar">
+                    <h3><span class="pillar-number">5</span>Organizational Sustainability</h3>
+                    <p>Enhance institutional governance, financial sustainability and operational efficiency.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Key Objectives -->
+        <section class="plan-section">
+            <h2>Key Objectives</h2>
+            <ul>
+                <li>Conduct cutting-edge research on marine and freshwater ecosystems</li>
+                <li>Develop innovative technologies for sustainable fisheries and aquaculture</li>
+                <li>Enhance climate change adaptation and mitigation strategies for aquatic systems</li>
+                <li>Strengthen marine spatial planning and ecosystem-based management</li>
+                <li>Promote blue economy initiatives for coastal communities</li>
+                <li>Expand research infrastructure and technological capabilities</li>
+                <li>Increase visibility and impact of KMFRI's research outputs</li>
+            </ul>
+        </section>
+        
+        <!-- Implementation Framework -->
+        <section class="plan-section">
+            <h2>Implementation Framework</h2>
+            <p>The successful implementation of this Strategic Plan will be achieved through:</p>
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px; margin: 10px;">
+                    <h4 style="color: var(--accent-teal);">Governance</h4>
+                    <p>Strong leadership and oversight by KMFRI's Board of Management</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; margin: 10px;">
+                    <h4 style="color: var(--accent-teal);">Partnerships</h4>
+                    <p>Collaboration with national and international research institutions</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; margin: 10px;">
+                    <h4 style="color: var(--accent-teal);">Monitoring</h4>
+                    <p>Regular performance assessments and adaptive management</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Download Section -->
+        <section class="download-section">
+            <h2>Download the Full Strategic Plan</h2>
+            <p>For complete details of our strategic objectives, implementation strategies, and performance indicators, download the full document.</p>
+            <a href="documents/kmfri-strategic-plan-2023-2027.pdf" class="download-btn">Download PDF (5.2MB)</a>
+        </section>
+    </main>
+</body>
+</html>

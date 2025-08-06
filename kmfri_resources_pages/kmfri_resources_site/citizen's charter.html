@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen's Service Charter | KMFRI</title>
+    <style>
+        /* Main Styles */
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-blue: #004d99;
+            --accent-teal: #008080;
+            --light-bg: #f5f9fc;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --highlight-yellow: #fff9e6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/citizen-service-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: #e9ecef;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        /* Charter Content */
+        .charter-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-teal);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Introduction Section */
+        .intro-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+        
+        .intro-section p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background-color: var(--highlight-yellow);
+            border-left: 4px solid var(--accent-teal);
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        /* Commitment Cards */
+        .commitments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .commitment-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .commitment-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .commitment-icon {
+            font-size: 2.5rem;
+            color: var(--accent-teal);
+            margin-bottom: 20px;
+        }
+        
+        .commitment-card h3 {
+            color: var(--secondary-blue);
+            margin-top: 0;
+        }
+        
+        /* Services Table */
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .services-table th {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .services-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .services-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .services-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .services-table tr:hover {
+            background-color: #f1f7fd;
+        }
+        
+        /* Feedback Section */
+        .feedback-section {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: 8px;
+        }
+        
+        .feedback-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .feedback-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+        
+        .feedback-option {
+            flex: 1;
+            min-width: 250px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .feedback-option h3 {
+            margin-top: 0;
+        }
+        
+        .feedback-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--secondary-blue);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .feedback-btn:hover {
+            background-color: var(--accent-teal);
+            color: white;
+        }
+        
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--accent-teal);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .services-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .intro-section, .commitment-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb container">
+        <a href="index.html">Home</a> &gt; <a href="about.html">About Us</a> &gt; <span>Citizen's Service Charter</span>
+    </div>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Citizen's Service Charter</h1>
+            <p>Our commitment to excellent service delivery for all stakeholders</p>
+            <img src="images/kmfri-logo.png" alt="KMFRI Logo" style="max-width: 150px; margin-top: 20px;">
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="charter-content container">
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <h2>Welcome to Our Service Charter</h2>
+            <p>The Kenya Marine and Fisheries Research Institute (KMFRI) is committed to providing quality services to all our stakeholders. This Service Charter outlines our commitment to service excellence, the standards you can expect from us, and how you can provide feedback on our services.</p>
+            
+            <div class="highlight-box">
+                <h3>Our Pledge</h3>
+                <p>We pledge to provide professional, efficient, and courteous services to all our clients while upholding the highest standards of integrity and accountability.</p>
+            </div>
+            
+            <p>This charter reflects our commitment under Kenya's Constitution, the Public Service Values and Principles (Article 232), and the government's service delivery reforms.</p>
+        </section>
+        
+        <!-- Our Commitments -->
+        <div class="section-title">
+            <h2>Our Service Commitments</h2>
+            <p>We are dedicated to meeting these key service standards in all our interactions</p>
+        </div>
+        
+        <div class="commitments">
+            <div class="commitment-card">
+                <div class="commitment-icon">⏱️</div>
+                <h3>Timely Service</h3>
+                <p>We commit to providing services within specified timeframes and will inform you promptly if delays occur.</p>
+            </div>
+            
+            <div class="commitment-card">
+                <div class="commitment-icon">👥</div>
+                <h3>Courtesy & Respect</h3>
+                <p>All our staff will serve you with professionalism, courtesy, and respect regardless of your background.</p>
+            </div>
+            
+            <div class="commitment-card">
+                <div class="commitment-icon">🔍</div>
+                <h3>Transparency</h3>
+                <p>We will provide clear information about our services, requirements, fees, and decision-making processes.</p>
+            </div>
+            
+            <div class="commitment-card">
+                <div class="commitment-icon">📢</div>
+                <h3>Public Participation</h3>
+                <p>We will actively seek and consider stakeholder input in our research priorities and service delivery.</p>
+            </div>
+            
+            <div class="commitment-card">
+                <div class="commitment-icon">📝</div>
+                <h3>Feedback Mechanism</h3>
+                <p>We have established channels for you to provide feedback, complaints, or compliments about our services.</p>
+            </div>
+            
+            <div class="commitment-card">
+                <div class="commitment-icon">🔄</div>
+                <h3>Continuous Improvement</h3>
+                <p>We regularly review our services to identify areas for improvement and implement best practices.</p>
+            </div>
+        </div>
+        
+        <!-- Services Section -->
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Key services we provide to citizens and stakeholders</p>
+        </div>
+        
+        <table class="services-table">
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Description</th>
+                    <th>Service Standard</th>
+                    <th>Responsible Office</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Research Information</td>
+                    <td>Provision of marine and fisheries research findings and data</td>
+                    <td>Response within 5 working days</td>
+                    <td>Research Coordination</td>
+                </tr>
+                <tr>
+                    <td>Laboratory Services</td>
+                    <td>Water quality testing, species identification, and other lab analyses</td>
+                    <td>Completion within 14 working days (depending on test)</td>
+                    <td>Central Laboratory</td>
+                </tr>
+                <tr>
+                    <td>Technical Advisory</td>
+                    <td>Expert advice on marine and freshwater resource management</td>
+                    <td>Initial response within 3 working days</td>
+                    <td>Technical Departments</td>
+                </tr>
+                <tr>
+                    <td>Training Programs</td>
+                    <td>Capacity building in aquaculture, fisheries management, etc.</td>
+                    <td>Notification of application status within 10 working days</td>
+                    <td>Training Department</td>
+                </tr>
+                <tr>
+                    <td>Licensing Support</td>
+                    <td>Technical input for aquaculture and fishing license applications</td>
+                    <td>Processing within 15 working days</td>
+                    <td>Regulatory Affairs</td>
+                </tr>
+                <tr>
+                    <td>Public Awareness</td>
+                    <td>Educational programs and materials on marine conservation</td>
+                    <td>Requests addressed within 7 working days</td>
+                    <td>Public Awareness Unit</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Feedback Section -->
+        <section class="feedback-section">
+            <div class="feedback-container">
+                <h2 style="text-align: center; margin-top: 0;">Your Feedback Matters</h2>
+                <p style="text-align: center;">We value your feedback to help us improve our services. Please let us know about your experience with KMFRI services.</p>
+                
+                <div class="feedback-options">
+                    <div class="feedback-option">
+                        <h3>Compliments</h3>
+                        <p>Tell us when we've done well so we can recognize our staff and maintain good practices.</p>
+                        <a href="feedback.html?type=compliment" class="feedback-btn">Give Compliment</a>
+                    </div>
+                    
+                    <div class="feedback-option">
+                        <h3>Complaints</h3>
+                        <p>Inform us when our service falls short so we can address the issue and improve.</p>
+                        <a href="feedback.html?type=complaint" class="feedback-btn">Make Complaint</a>
+                    </div>
+                    
+                    <div class="feedback-option">
+                        <h3>Suggestions</h3>
+                        <p>Share your ideas for how we can enhance our services and better meet your needs.</p>
+                        <a href="feedback.html?type=suggestion" class="feedback-btn">Offer Suggestion</a>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 40px; font-size: 0.9rem;">All feedback will be acknowledged within 2 working days and addressed within 14 working days.</p>
+            </div>
+        </section>
+        
+        <!-- Download Section -->
+        <div class="download-section">
+            <h2>Download the Full Service Charter</h2>
+            <p>For complete details of our service commitments, standards, and feedback mechanisms, download the full document.</p>
+            <a href="documents/kmfri-service-charter.pdf" class="download-btn">Download Service Charter (PDF)</a>
+        </div>
+    </main>
+</body>
+</html>
+  
+  

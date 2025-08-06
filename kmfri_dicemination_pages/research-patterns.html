@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Research Patents</title>
+    <style>
+        /* Reusing KMFRI styles with additions */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .patents-container {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            gap: 20px;
+        }
+        .patents-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .patents-main {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .patent-category {
+            margin-bottom: 15px;
+        }
+        .patent-category h3 {
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 12px;
+            margin: 0 -12px;
+        }
+        .patent-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .patent-category li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .patent-category a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .patent-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .patent-item h2 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+        .patent-meta {
+            background-color: #f0f7ff;
+            padding: 10px;
+            margin-bottom: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .patent-meta div span:first-child {
+            font-weight: bold;
+            display: inline-block;
+            width: 120px;
+        }
+        .patent-abstract {
+            margin-bottom: 15px;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.85em;
+            margin-right: 5px;
+        }
+        .btn-outline {
+            background: white;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+        .search-box {
+            background: #e6f2ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .search-box h2 {
+            margin-top: 0;
+            color: #004080;
+        }
+        .search-box input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .search-box button {
+            padding: 10px 15px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+   
+
+    <div class="page-title">
+        <div class="container">
+            <h1>KMFRI Research Patents</h1>
+        </div>
+    </div>
+
+    <div class="container patents-container">
+        <aside class="patents-sidebar">
+            <div class="patent-category">
+                <h3>Patent Categories</h3>
+                <ul>
+                    <li><a href="#">Aquaculture Technologies</a></li>
+                    <li><a href="#">Fish Processing</a></li>
+                    <li><a href="#">Marine Biotechnology</a></li>
+                    <li><a href="#">Water Treatment</a></li>
+                    <li><a href="#">Fishing Gear</a></li>
+                    <li><a href="#">All Patents</a></li>
+                </ul>
+            </div>
+            
+            <div class="patent-category">
+                <h3>Patent Status</h3>
+                <ul>
+                    <li><a href="#">Granted Patents</a></li>
+                    <li><a href="#">Pending Applications</a></li>
+                    <li><a href="#">Expired Patents</a></li>
+                </ul>
+            </div>
+            
+            <div class="patent-category">
+                <h3>Patent Offices</h3>
+                <ul>
+                    <li><a href="#">Kenya Industrial Property Institute</a></li>
+                    <li><a href="#">African Regional IP Organization</a></li>
+                    <li><a href="#">World Intellectual Property Org</a></li>
+                </ul>
+            </div>
+            
+            <div class="patent-category">
+                <h3>For Inventors</h3>
+                <ul>
+                    <li><a href="#">Patent Application Process</a></li>
+                    <li><a href="#">IP Policy</a></li>
+                    <li><a href="#">Commercialization</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <main class="patents-main">
+            <div class="search-box">
+                <h2>Search Patents</h2>
+                <input type="text" placeholder="Enter patent number, title, or inventor">
+                <button>Search</button>
+            </div>
+            
+            <div class="patent-item">
+                <h2>Improved Tilapia Feed Formulation for Enhanced Growth</h2>
+                <div class="patent-meta">
+                    <div><span>Patent Number:</span> KE/P/2023/1234</div>
+                    <div><span>Filing Date:</span> 15 March 2023</div>
+                    <div><span>Inventors:</span> Dr. Jane Muthoni, Dr. Samuel Owiti</div>
+                    <div><span>Status:</span> Granted</div>
+                    <div><span>Patent Office:</span> KIPI</div>
+                    <div><span>Expiry Date:</span> 15 March 2043</div>
+                </div>
+                <div class="patent-abstract">
+                    <h3>Abstract</h3>
+                    <p>This invention relates to a novel feed formulation for Nile tilapia (Oreochromis niloticus) that enhances growth rates by 25-30% compared to conventional feeds. The formulation incorporates locally available ingredients including algae meal and insect protein, reducing feed costs while improving feed conversion ratios. The patented formulation also includes a probiotic mix that improves gut health and reduces disease incidence.</p>
+                </div>
+                <a href="#" class="btn">View Patent Details</a>
+                <a href="#" class="btn btn-outline">Licensing Information</a>
+            </div>
+            
+            <div class="patent-item">
+                <h2>Solar-Powered Fish Dryer with Moisture Control</h2>
+                <div class="patent-meta">
+                    <div><span>Patent Number:</span> ARIPO/P/2022/5678</div>
+                    <div><span>Filing Date:</span> 10 August 2022</div>
+                    <div><span>Inventors:</span> Prof. Linda Atieno, Dr. Peter Kamau</div>
+                    <div><span>Status:</span> Pending</div>
+                    <div><span>Patent Office:</span> ARIPO</div>
+                    <div><span>Countries:</span> Kenya, Tanzania, Uganda</div>
+                </div>
+                <div class="patent-abstract">
+                    <h3>Abstract</h3>
+                    <p>A solar-powered fish drying system that maintains optimal drying temperatures (40-45°C) and humidity levels through an automated ventilation system. The device includes a solar collector, drying chamber with adjustable racks, and a microcontroller that monitors and adjusts drying parameters. This innovation reduces drying time by 30% compared to traditional methods while maintaining higher nutritional quality and preventing contamination.</p>
+                </div>
+                <a href="#" class="btn">View Patent Application</a>
+                <a href="#" class="btn btn-outline">Technical Specifications</a>
+            </div>
+            
+            <div class="patent-item">
+                <h2>Biodegradable Fishing Net with Bycatch Reduction</h2>
+                <div class="patnet-meta">
+                    <div><span>Patent Number:</span> KE/P/2021/9101</div>
+                    <div><span>Filing Date:</span> 5 June 2021</div>
+                    <div><span>Inventors:</span> Dr. Michael Juma, Dr. Sarah Achieng</div>
+                    <div><span>Status:</span> Granted</div>
+                    <div><span>Patent Office:</span> KIPI</div>
+                    <div><span>Expiry Date:</span> 5 June 2031</div>
+                </div>
+                <div class="patent-abstract">
+                    <h3>Abstract</h3>
+                    <p>A fishing net constructed from biodegradable polymer fibers that degrades after 18-24 months in marine environments, reducing ghost fishing impacts. The net incorporates selective mesh sizes and visual markers that reduce bycatch of juvenile fish and non-target species by up to 40%. The material maintains strength comparable to conventional nylon nets during use but breaks down completely in marine environments without toxic residues.</p>
+                </div>
+                <a href="#" class="btn">View Patent Details</a>
+                <a href="#" class="btn btn-outline">Commercial Partners</a>
+                <a href="#" class="btn btn-outline">Environmental Impact Study</a>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn">View All Patents</button>
+            </div>
+        </main>
+    </div>
+
+  
+</body>
+</html>

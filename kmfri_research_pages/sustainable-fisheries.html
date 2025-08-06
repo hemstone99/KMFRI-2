@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sustainable Fisheries | KMFRI</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="page-container">
+    <section class="research-category">
+      <h1>Sustainable Fisheries Research</h1>
+      <div class="hero-image">
+        <img src="images/sustainable-fisheries-hero.jpg" alt="Sustainable Fisheries"/>
+      </div>
+      <p>KMFRI is dedicated to promoting sustainable fisheries practices through research and innovation. Our focus includes fish stock assessments, ecosystem-based management, and the socio-economic aspects of fisheries.</p>
+    </section>
+
+    <section class="research-details">
+      <h2>Research Focus Areas</h2>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <img src="images/fish-stock.jpg" alt="Fish Stock Assessment"/>
+          <h3>Fish Stock Assessment</h3>
+          <p>Evaluating fish populations and their habitats to ensure sustainable harvesting.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/ecosystem-management.jpg" alt="Ecosystem-Based Management"/>
+          <h3>Ecosystem-Based Management</h3>
+          <p>Integrating ecological, social, and economic factors in fisheries management.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/socio-economic.jpg" alt="Socio-Economic Studies"/>
+          <h3>Socio-Economic Studies</h3>
+          <p>Analyzing the impact of fisheries on local communities and economies.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/fisheries-policy.jpg" alt="Fisheries Policy"/>
+          <h3>Fisheries Policy</h3>
+          <p>Supporting the development of policies for sustainable fisheries management.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="achievements">
+      <h2>Notable Achievements</h2>
+      <ul>
+        <li>Implementation of community-based fisheries management plans</li>
+        <li>Development of sustainable aquaculture practices</li>
+        <li>Collaboration with regional fisheries organizations</li>
+      </ul>
+    </section>
+
+    <section class="image-gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="images/gallery-fish1.jpg" alt="Fish stock assessment"/>
+        <img src="images/gallery-fish2.jpg" alt="Ecosystem management"/>
+        <img src="images/gallery-fish3.jpg" alt="Socio-economic studies"/>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
+<style>
+  /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE STYLING */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f9fc;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* PAGE LAYOUT */
+main.page-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+  color: #004080;
+  margin-bottom: 1rem;
+}
+
+/* HERO IMAGE */
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+/* PARAGRAPHS */
+.research-category p,
+.research-details p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* RESEARCH DETAILS GRID */
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.focus-card {
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,64,128,0.05);
+}
+
+.focus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,64,128,0.1);
+}
+
+.focus-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.focus-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #004080;
+}
+
+/* ACHIEVEMENTS */
+.achievements {
+  margin-top: 2rem;
+}
+
+.achievements ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 1rem;
+}
+
+.achievements li {
+  margin-bottom: 0.5rem;
+}
+
+/* GALLERY */
+.image-gallery {
+  margin-top: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .focus-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+</style>

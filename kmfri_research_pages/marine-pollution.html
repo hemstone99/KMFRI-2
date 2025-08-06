@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Marine Pollution | KMFRI</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="page-container">
+    <section class="research-category">
+      <h1>Marine Pollution Research</h1>
+      <div class="hero-image">
+        <img src="images/marine-pollution-hero.jpg" alt="Marine Pollution Research"/>
+      </div>
+      <p>KMFRI’s Marine Pollution research program investigates sources, spread, and impact of pollutants in Kenya’s marine environment. The work informs mitigation strategies and supports policy enforcement in coastal zones.</p>
+    </section>
+
+    <section class="research-details">
+      <h2>Key Focus Areas</h2>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <img src="images/plastic-pollution.jpg" alt="Plastic Pollution"/>
+          <h3>Plastic Debris</h3>
+          <p>Surveys on microplastics, plastic bottle density, and shoreline debris monitoring.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/oil-spills.jpg" alt="Oil Spills"/>
+          <h3>Oil Spills</h3>
+          <p>Tracking and mapping of oil spills and hydrocarbons in port and coastal waters.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/heavy-metals.jpg" alt="Heavy Metals"/>
+          <h3>Heavy Metals</h3>
+          <p>Analysis of lead, cadmium, and mercury in sediment and biota.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/eutrophication.jpg" alt="Eutrophication"/>
+          <h3>Eutrophication</h3>
+          <p>Studies on algal blooms caused by nutrient loading from agricultural runoff.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="achievements">
+      <h2>Research Outcomes</h2>
+      <ul>
+        <li>Development of pollution status reports for the Ministry of Environment</li>
+        <li>Guidelines for marine waste management shared with coastal counties</li>
+        <li>Participation in regional protocols under Nairobi Convention</li>
+      </ul>
+    </section>
+
+    <section class="image-gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="images/gallery-pollution1.jpg" alt="Microplastic survey"/>
+        <img src="images/gallery-pollution2.jpg" alt="Oil slick documentation"/>
+        <img src="images/gallery-pollution3.jpg" alt="Lab sample analysis"/>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+<!-- This is the end of the Marine Pollution research page for KMFRI. -->
+
+<style>
+  /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE TYPOGRAPHY & BODY */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f9fc;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* MAIN PAGE WRAPPER */
+main.page-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+  color: #004080;
+  margin-bottom: 1rem;
+}
+
+/* HERO IMAGE */
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+}
+
+/* SECTION PARAGRAPH TEXT */
+.research-category p,
+.research-details p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* FOCUS AREA GRID */
+.focus-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1rem;
+}
+
+.focus-card {
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,64,128,0.05);
+}
+
+.focus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,64,128,0.1);
+}
+
+.focus-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.focus-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #004080;
+}
+
+/* ACHIEVEMENTS / OUTCOMES */
+.achievements {
+  margin-top: 2rem;
+}
+
+.achievements ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 1rem;
+}
+
+.achievements li {
+  margin-bottom: 0.5rem;
+}
+
+/* IMAGE GALLERY */
+.image-gallery {
+  margin-top: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+  .focus-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+</style>
+<!-- This is the end of the CSS for the Marine Pollution research page for KMFRI.

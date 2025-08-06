@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Coastal Processes | KMFRI</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="page-container">
+    <section class="research-category">
+      <h1>Coastal Processes</h1>
+      <div class="hero-image">
+        <img src="images/coastal-processes-hero.jpg" alt="Coastal Processes Research"/>
+      </div>
+      <p>KMFRI’s Coastal Processes research focuses on the physical and geomorphological dynamics shaping Kenya’s shoreline. It informs coastal development, erosion control, and infrastructure resilience.</p>
+    </section>
+
+    <section class="research-details">
+      <h2>Research Themes</h2>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <img src="images/wave-dynamics.jpg" alt="Wave Dynamics"/>
+          <h3>Wave Dynamics</h3>
+          <p>Measurement and modeling of wave energy and shoreline interaction.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/sediment-transport.jpg" alt="Sediment Transport"/>
+          <h3>Sediment Transport</h3>
+          <p>Tracking erosion, accretion, and longshore drift patterns across the coast.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/coastal-erosion.jpg" alt="Coastal Erosion"/>
+          <h3>Coastal Erosion</h3>
+          <p>Identification of erosion hotspots and evaluation of natural and artificial barriers.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/coastal-mapping.jpg" alt="Coastal Mapping"/>
+          <h3>Shoreline Mapping</h3>
+          <p>High-resolution satellite and drone-based mapping for monitoring shoreline changes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="achievements">
+      <h2>Outcomes</h2>
+      <ul>
+        <li>Long-term shoreline change data supporting climate adaptation strategies</li>
+        <li>Hydrodynamic models developed for coastal development planning</li>
+        <li>Technical advisories issued for erosion mitigation and sand harvesting control</li>
+      </ul>
+    </section>
+
+    <section class="image-gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="images/gallery-coast1.jpg" alt="Wave monitoring station"/>
+        <img src="images/gallery-coast2.jpg" alt="Drone shoreline mapping"/>
+        <img src="images/gallery-coast3.jpg" alt="Community erosion training"/>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
+<style>
+  {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f9fc;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* MAIN CONTAINER */
+main.page-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+  color: #004080;
+  margin-bottom: 1rem;
+}
+
+/* HERO IMAGE */
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+}
+
+/* PARAGRAPH TEXT */
+.research-category p,
+.research-details p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* RESEARCH GRID LAYOUT */
+.focus-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1rem;
+}
+
+.focus-card {
+  background-color: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 64, 128, 0.05);
+}
+
+.focus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 64, 128, 0.1);
+}
+
+.focus-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.focus-card h3 {
+  color: #004080;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ACHIEVEMENTS SECTION */
+.achievements {
+  margin-top: 2rem;
+}
+
+.achievements ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-top: 1rem;
+}
+
+.achievements li {
+  margin-bottom: 0.5rem;
+}
+
+/* IMAGE GALLERY */
+.image-gallery {
+  margin-top: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 600px) {
+  .focus-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+</style>
+<!-- This is the end of the CSS for the Climate Change Impact research page for KMFRI.

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Vessels | KMFRI</title>
+    <style>
+        :root {
+            --deep-blue: #005b96;
+            --light-teal: #00b4d8;
+            --seafoam: #90e0ef;
+            --sand: #f8f3e6;
+            --coral: #ff6b6b;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: var(--sand);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 91, 150, 0.8), rgba(0, 91, 150, 0.8)), url('images/vessels-bg.jpg');
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .vessel-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            transition: transform 0.3s;
+        }
+        
+        .vessel-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .vessel-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .vessel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .vessel-card:hover .vessel-image img {
+            transform: scale(1.05);
+        }
+        
+        .vessel-details {
+            padding: 30px;
+        }
+        
+        .vessel-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+            background: var(--seafoam);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .spec-item {
+            text-align: center;
+        }
+        
+        .spec-value {
+            font-weight: bold;
+            color: var(--deep-blue);
+        }
+        
+        .booking-notice {
+            background: var(--seafoam);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="container">
+            <h1>Research Vessels</h1>
+            <p>Our marine research fleet enabling ocean exploration and data collection</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="vessel-card">
+            <div class="vessel-image">
+                <img src="/Research Vessels _ Damen.jpeg" alt="RV Mtafiti">
+            </div>
+            <div class="vessel-details">
+                <h2 style="color: var(--deep-blue);">RV Mtafiti</h2>
+                <p>The flagship of KMFRI's research fleet, RV Mtafiti is a 28-meter vessel equipped for extended offshore research missions in the Western Indian Ocean. The ocean is the new focal point in the discourse on economic growth and sustainable development, both at national and international levels.  With this realization, Kenya, as a marine state, is in the forefront of building global consensus around best approaches to promote sustainable blue economy development. The 2030 agenda for sustainable development recognizes blue economy as central in advancing sustainable development. SDG 14 calls on all stakeholders to “conserve and sustainably use the oceans, seas, and marine resources for sustainable development”. Kenya, therefore, is conducting scientific research on the marine environment and the resources of its 200 nautical miles EZZ, therein to support sustainable exploitation and management. To achieve this goal, and other regional and international obligations KMFRI has been given the mandate to conduct extensive scientific marine research using RV Mtafiti.
+RV Mtafiti Book - Marine Research towards Food Security and Economic Development in Kenya</p>
+                
+               <h3 style="color: var(--deep-blue);">Operational Research and Capacity Profile</h3>
+               <p>RV Mtafiti is a multi-disciplinary oceanographic research vessel that plays a crucial role in the collection of ocean data and information in support of research into understanding the physical, chemical, and biological processes in the ocean as well as the scientific study of the role of the oceans in weather and climate. RV Mtafiti is therefore, is designed for fisheries acoustic research, oceanographic, hydrographic and geological investigation.
+The vessel is equipped with two research laboratories: a biological and fisheries laboratory, and an oceanography and chemical research laboratory.
+The vessel is therefore capable of conducting the following:
+Fish stock assessment surveys
+Ocean productivity surveys
+Marine biodiversity surveys
+Environmental & pollution monitoring
+Seabed mapping
+Benthic mapping
+Sediment surveys
+Equipment
+The success of Kenya’s Blue Economy initiative is increasingly dependent on generating high quality knowledge and information to inform policy and decision-making. Application of high quality scientific and technological innovations as well as proper infrastructure is therefore crucial. With aid from the government and collaborating institutions, KMFRI is equipped with high quality research infrastructure and equipment, which enable high quality data and information to be collected and analyzed.
+Examples of equipment onboard are as follows:
+EK 60 scientific echo sounder
+Ocean surveyor Teledyne acoustic Doppler and current profiler
+SBE 21 SeaCAT Thermosalinograph
+CTD Rossette
+Phytoplankton bongo net
+Sediment van veen grab
+Piston corer
+Spotting telescope</p>
+
+                <div class="vessel-specs">
+                    <div class="spec-item">
+                        <div class="spec-value">28m</div>
+                        <div>Length</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">12</div>
+                        <div>Scientific crew</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">15 knots</div>
+                        <div>Max speed</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">21 days</div>
+                        <div>Endurance</div>
+                    </div>
+                </div>
+                
+                <h3>Capabilities</h3>
+                <ul>
+                    <li>Hydroacoustic fish stock assessment</li>
+                    <li>Oceanographic data collection</li>
+                    <li>Deep water sampling (up to 2000m)</li>
+                    <li>Remotely Operated Vehicle (ROV) operations</li>
+                    <li>Onboard wet and dry laboratories</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="vessel-card">
+            <div class="vessel-image">
+                <img src="/Rv.jpeg" alt="RV Uvumbuzi">
+            </div>
+            <div class="vessel-details">
+                <h2 style="color: var(--deep-blue);">RV Uvumbuzi</h2>
+                <p>A 15-meter coastal research vessel designed for inshore and reef studies, supporting fisheries research and marine biodiversity surveys.</p>
+                
+                <div class="vessel-specs">
+                    <div class="spec-item">
+                        <div class="spec-value">15m</div>
+                        <div>Length</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">6</div>
+                        <div>Scientific crew</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">18 knots</div>
+                        <div>Max speed</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">5 days</div>
+                        <div>Endurance</div>
+                    </div>
+                </div>
+                
+                <h3>Capabilities</h3>
+                <ul>
+                    <li>Shallow water trawling</li>
+                    <li>Coral reef monitoring</li>
+                    <li>Coastal water quality sampling</li>
+                    <li>Small boat operations</li>
+                    <li>SCUBA diving support</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="vessel-card">
+            <div class="vessel-image">
+                <img src="/Research vessel 3.jpeg" alt="RV Victoria">
+            </div>
+            <div class="vessel-details">
+                <h2 style="color: var(--deep-blue);">RV Victoria</h2>
+                <p>Freshwater research vessel operating on Lake Victoria, equipped for limnological studies and fisheries assessments.</p>
+                
+                <div class="vessel-specs">
+                    <div class="spec-item">
+                        <div class="spec-value">12m</div>
+                        <div>Length</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">5</div>
+                        <div>Scientific crew</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">15 knots</div>
+                        <div>Max speed</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">7 days</div>
+                        <div>Endurance</div>
+                    </div>
+                </div>
+                
+                <h3>Capabilities</h3>
+                <ul>
+                    <li>Lake bathymetry mapping</li>
+                    <li>Freshwater plankton sampling</li>
+                    <li>Gillnet surveys</li>
+                    <li>Water quality monitoring</li>
+                    <li>Acoustic fish stock assessment</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="booking-notice">
+            <h2 style="color: var(--deep-blue);">Vessel Booking Information</h2>
+            <p>KMFRI research vessels are available for collaborative research projects, environmental monitoring, and training programs. To inquire about vessel availability or propose a research cruise:</p>
+            <ul>
+                <li><strong>Email:</strong> vessels@kmfri.go.ke</li>
+                <li><strong>Phone:</strong> +254 722 789012 (Marine Operations Office)</li>
+                <li><strong>Lead Time:</strong> Minimum 3 months notice required for research cruise planning</li>
+                <li><strong>Requirements:</strong> Research proposal, safety certifications, and approved research permit</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,101 @@
+.board-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Section Title */
+.board-header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0d3b66;
+  border-left: 6px solid #0d6efd;
+  padding-left: 14px;
+  margin-bottom: 2rem;
+}
+.board-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,auto));
+  gap:10px;
+}
+/* Chairman Style */
+.chairman-card {
+  max-width: 300px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  box-shadow: 0 0 10px black;
+  padding:10px;
+  background:rgb(228, 228, 230);
+  border-radius: 20px;
+}
+.chairman-card img {
+  width: 90%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.chairman-card h3 {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: #0b246e;
+}
+.chairman-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ...existing code... */
+.board-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  background: #fff;
+  border-radius: 8px;
+  text-align: center;
+  overflow: hidden;
+ box-shadow: 0 0 10px black;
+  border-radius: 20px;
+  transition: transform 0.2s ease;
+  background:rgb(228, 228, 230);
+  /* Optionally, increase min-height or padding for a larger card */
+}
+.board-member img {
+  width: 50%; /* Slightly larger image inside the card */
+  max-width: 150px;
+  display: block;
+  object-fit: cover;
+}
+
+.board-member:hover {
+  transform: translateY(-5px);
+}
+.board-member img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+.board-member h4 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.25rem;
+  color: #0d3b66;
+}
+.board-member p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+
+
+/* ...existing code... */
+@media (max-width: 992px) {
+  .board-member { width: calc(50% - 1rem); }
+}
+@media (max-width: 768px) {
+  .board-member { width: 100%; }
+}
+/* ...existing code... */

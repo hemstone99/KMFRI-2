@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Library Catalogue</title>
+    <style>
+        /* Reusing KMFRI styles with additions */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .library-container {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            gap: 20px;
+        }
+        .library-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .library-main {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .search-box {
+            background: #e6f2ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .search-box h2 {
+            margin-top: 0;
+            color: #004080;
+        }
+        .search-box input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .search-box button {
+            padding: 10px 15px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-options {
+            margin-top: 15px;
+        }
+        .search-options label {
+            margin-right: 15px;
+        }
+        .catalogue-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .catalogue-cover {
+            flex: 0 0 120px;
+            margin-right: 20px;
+        }
+        .catalogue-cover img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        .catalogue-details {
+            flex: 1;
+        }
+        .catalogue-details h3 {
+            color: #0066cc;
+            margin-top: 0;
+        }
+        .catalogue-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .catalogue-meta span {
+            margin-right: 15px;
+        }
+        .availability {
+            font-weight: bold;
+            color: green;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.85em;
+            margin-right: 5px;
+        }
+        .btn-outline {
+            background: white;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #0066cc;
+        }
+        .pagination a.active {
+            background-color: #0066cc;
+            color: white;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+   
+
+    <div class="page-title">
+        <div class="container">
+            <h1>KMFRI Library Catalogue</h1>
+        </div>
+    </div>
+
+    <div class="container library-container">
+        <aside class="library-sidebar">
+            <h3>Quick Links</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px;"><a href="#" class="btn" style="display: block; text-align: center;">New Arrivals</a></li>
+                <li style="margin-bottom: 10px;"><a href="#" class="btn" style="display: block; text-align: center;">E-Resources</a></li>
+                <li style="margin-bottom: 10px;"><a href="#" class="btn" style="display: block; text-align: center;">Research Help</a></li>
+                <li style="margin-bottom: 10px;"><a href="#" class="btn" style="display: block; text-align: center;">Library Services</a></li>
+            </ul>
+            
+            <h3 style="margin-top: 30px;">Browse By Subject</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;"><a href="#">Marine Biology</a></li>
+                <li style="margin-bottom: 8px;"><a href="#">Fisheries Science</a></li>
+                <li style="margin-bottom: 8px;"><a href="#">Aquaculture</a></li>
+                <li style="margin-bottom: 8px;"><a href="#">Oceanography</a></li>
+                <li style="margin-bottom: 8px;"><a href="#">Environmental Science</a></li>
+                <li style="margin-bottom: 8px;"><a href="#">Climate Change</a></li>
+            </ul>
+            
+            <h3 style="margin-top: 30px;">Library Hours</h3>
+            <p>Monday-Friday: 8:00 AM - 5:00 PM</p>
+            <p>Saturday: 9:00 AM - 1:00 PM</p>
+            <p>Sunday: Closed</p>
+        </aside>
+        
+        <main class="library-main">
+            <div class="search-box">
+                <h2>Search Library Catalogue</h2>
+                <input type="text" placeholder="Enter title, author, ISBN, or keywords">
+                <button>Search</button>
+                
+                <div class="search-options">
+                    <label><input type="radio" name="search-type" checked> Keyword</label>
+                    <label><input type="radio" name="search-type"> Title</label>
+                    <label><input type="radio" name="search-type"> Author</label>
+                    <label><input type="radio" name="search-type"> Subject</label>
+                    <label><input type="radio" name="search-type"> ISBN/ISSN</label>
+                </div>
+            </div>
+            
+            <h3>Search Results (24 items found)</h3>
+            
+            <div class="catalogue-item">
+                <div class="catalogue-cover">
+                    <img src="book-cover1.jpg" alt="Book Cover">
+                </div>
+                <div class="catalogue-details">
+                    <h3>Marine Ecosystems and Climate Change in East Africa</h3>
+                    <div class="catalogue-meta">
+                        <span><strong>Author:</strong> J. Mwangi, L. Atieno</span>
+                        <span><strong>Publisher:</strong> Springer, 2022</span>
+                        <span><strong>ISBN:</strong> 978-3-030-12345-6</span>
+                        <span class="availability">Available</span>
+                    </div>
+                    <p>This comprehensive volume examines the impacts of climate change on marine ecosystems along the East African coast, with case studies from Kenya, Tanzania, and Mozambique.</p>
+                    <a href="#" class="btn">View Details</a>
+                    <a href="#" class="btn btn-outline">Reserve</a>
+                </div>
+            </div>
+            
+            <div class="catalogue-item">
+                <div class="catalogue-cover">
+                    <img src="book-cover2.jpg" alt="Book Cover">
+                </div>
+                <div class="catalogue-details">
+                    <h3>Advances in Aquaculture Technology</h3>
+                    <div class="catalogue-meta">
+                        <span><strong>Author:</strong> P. Kamau, S. Omar (Eds.)</span>
+                        <span><strong>Publisher:</strong> KMFRI Press, 2021</span>
+                        <span><strong>ISBN:</strong> 978-9966-123-45-6</span>
+                        <span class="availability">Available</span>
+                    </div>
+                    <p>Proceedings of the 3rd International Conference on Aquaculture Development in Africa, covering innovations in fish farming, feed technology, and disease management.</p>
+                    <a href="#" class="btn">View Details</a>
+                    <a href="#" class="btn btn-outline">Reserve</a>
+                </div>
+            </div>
+            
+            <div class="catalogue-item">
+                <div class="catalogue-cover">
+                    <img src="journal-cover.jpg" alt="Journal Cover">
+                </div>
+                <div class="catalogue-details">
+                    <h3>African Journal of Marine Science - Vol. 45, No. 3 (2023)</h3>
+                    <div class="catalogue-meta">
+                        <span><strong>Publisher:</strong> NISC, 2023</span>
+                        <span><strong>ISSN:</strong> 1814-232X</span>
+                        <span class="availability">Available in Periodicals</span>
+                    </div>
+                    <p>Includes articles on marine biodiversity, fisheries management, and coastal zone management from researchers across Africa.</p>
+                    <a href="#" class="btn">View Contents</a>
+                    <a href="#" class="btn">View Online</a>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#">&laquo; Previous</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next &raquo;</a>
+            </div>
+        </main>
+    </div>
+
+    
+</body>
+</html>

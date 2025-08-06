@@ -1,0 +1,28 @@
+:root {
+  --bg-light: #f2f6fa;
+  --bg-dark: #1e2630;
+  --text-light: #222e3a;
+  --text-dark: #e0e6ea;
+  --primary: #00529c;
+  --accent: #73a1d1;
+  --border-light: #d1d9e0;
+}
+body { font-family: 'Segoe UI', sans-serif; background: var(--bg-light); color: var(--text-light); margin:0; padding:20px; transition: background .3s,color .3s; }
+header { text-align:center; padding:30px 0 20px; background:var(--primary); color:#fff; }
+header h1 { margin-bottom:5px; font-size:2em; }
+header p { margin-bottom:15px; font-size:1.1em; }
+header nav a { color:#fff; text-decoration:none; font-weight:600; padding:8px 12px; border:1px solid #fff; border-radius:4px; transition:background .2s; }
+header nav a:hover { background:rgba(255,255,255,0.15); }
+section { max-width:900px; margin:30px auto; }
+.downloads a, .vacancies a { display:inline-block; margin:8px 0; padding:8px 12px; background:var(--primary); color:#fff; text-decoration:none; border-radius:4px; transition:background .2s; }
+.downloads a:hover, .vacancies a:hover { background:var(--accent); }
+.vacancies p { margin:15px 0; }
+.vacancy-item, .project-item { background:white; padding:20px; border-left:6px solid var(--primary); border-radius:5px; box-shadow:0 2px 6px rgba(0,0,0,0.1); margin-bottom:20px; }
+footer { text-align:center; margin:40px 0 10px; font-size:.85em; color:#666; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg-light: var(--bg-dark); --text-light: var(--text-dark); --primary: var(--accent); }
+  body { background:var(--bg-light); color:var(--text-light); }
+  header { background:var(--accent); }
+  .vacancy-item, .project-item { background:#2a323a; border-color:var(--accent); }
+  footer { color:#888; }
+}

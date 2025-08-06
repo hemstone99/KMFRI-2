@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Aquatic Journal</title>
+    <style>
+        /* KMFRI Main Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .journal-container {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 20px;
+        }
+        .journal-issues {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .journal-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .issue-card {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .issue-card h3 {
+            color: #0066cc;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="page-title">
+        <div class="container">
+            <h1>KMFRI Aquatic Journal</h1>
+        </div>
+    </div>
+
+    <div class="container journal-container">
+        <main class="journal-issues">
+            <h2>Latest Issue: Volume 15, Issue 2 (2023)</h2>
+            <div class="issue-card">
+                <h3>Impact of Climate Change on Lake Victoria Fisheries</h3>
+                <p><strong>Authors:</strong> J. Kamau, M. Achieng, P. Onyango</p>
+                <p><strong>Abstract:</strong> This study examines the effects of rising temperatures on fish populations...</p>
+                <a href="#" class="btn">Read Full Article</a>
+                <a href="#" class="btn">Download PDF</a>
+            </div>
+            
+            <div class="issue-card">
+                <h3>Aquaculture Development in Kenya: Challenges and Opportunities</h3>
+                <p><strong>Authors:</strong> S. Mwangi, L. Nyongesa, K. Otieno</p>
+                <p><strong>Abstract:</strong> An analysis of the current state of aquaculture in Kenya with recommendations...</p>
+                <a href="#" class="btn">Read Full Article</a>
+                <a href="#" class="btn">Download PDF</a>
+            </div>
+            
+            <h2>Previous Issues</h2>
+            <select id="year-select">
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+            </select>
+            
+            <div id="previous-issues">
+                <!-- Content loaded via JavaScript -->
+            </div>
+        </main>
+        
+        <aside class="journal-sidebar">
+            <h3>About the Journal</h3>
+            <p>The KMFRI Aquatic Journal publishes peer-reviewed research on marine and freshwater ecosystems, fisheries, and aquaculture.</p>
+            
+            <h3>Submission Guidelines</h3>
+            <p>We welcome original research articles, reviews, and short communications. Manuscripts should be submitted via email to journal@kmfri.go.ke</p>
+            
+            <h3>Editorial Board</h3>
+            <ul>
+                <li>Dr. Jane Muthoni - Editor-in-Chief</li>
+                <li>Prof. Samuel Owiti - Associate Editor</li>
+                <li>Dr. Linda Atieno - Associate Editor</li>
+            </ul>
+            
+            <h3>Subscribe</h3>
+            <p>Get notifications about new issues:</p>
+            <input type="email" placeholder="Your email address">
+            <button class="btn">Subscribe</button>
+        </aside>
+    </div>
+
+
+    <script>
+        // Simple JavaScript to load previous issues
+        document.getElementById('year-select').addEventListener('change', function() {
+            const year = this.value;
+            const previousIssues = document.getElementById('previous-issues');
+            
+            // In a real implementation, this would fetch data from a server
+            let content = '';
+            if (year === '2023') {
+                content = `
+                    <div class="issue-card">
+                        <h3>Volume 15, Issue 1 (2023)</h3>
+                        <p>Published: January 2023</p>
+                        <a href="#" class="btn">View Issue</a>
+                    </div>
+                `;
+            } else if (year === '2022') {
+                content = `
+                    <div class="issue-card">
+                        <h3>Volume 14, Issue 2 (2022)</h3>
+                        <p>Published: November 2022</p>
+                        <a href="#" class="btn">View Issue</a>
+                    </div>
+                    <div class="issue-card">
+                        <h3>Volume 14, Issue 1 (2022)</h3>
+                        <p>Published: June 2022</p>
+                        <a href="#" class="btn">View Issue</a>
+                    </div>
+                `;
+            }
+            
+            previousIssues.innerHTML = content;
+        });
+
+        // Trigger the change event to load initial content
+        document.getElementById('year-select').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>

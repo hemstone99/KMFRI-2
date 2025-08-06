@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI - News & Media</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3 {
+            color: #006837; /* KMFRI green color */
+        }
+        
+        /* Tab Styling */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-btn.active {
+            color: #006837;
+            border-bottom: 3px solid #006837;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            color: #006837;
+            background-color: #f0f0f0;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* News Styling */
+        .news-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .news-title {
+            font-size: 20px;
+            margin: 0 0 10px 0;
+        }
+        
+        .news-title a {
+            color: #006837;
+            text-decoration: none;
+        }
+        
+        .news-title a:hover {
+            text-decoration: underline;
+        }
+        
+        .news-excerpt {
+            margin-bottom: 10px;
+        }
+        
+        .read-more {
+            color: #006837;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        /* Media Styling */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .media-item {
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .media-thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .media-info {
+            padding: 15px;
+        }
+        
+        .media-title {
+            font-size: 16px;
+            margin: 0 0 10px 0;
+        }
+        
+        .media-title a {
+            color: #006837;
+            text-decoration: none;
+        }
+        
+        .media-date {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .view-all {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 16px;
+            background-color: #006837;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .view-all:hover {
+            background-color: #00552b;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+                border-left: 3px solid transparent;
+            }
+            
+            .tab-btn.active {
+                border-bottom: 1px solid #ddd;
+                border-left: 3px solid #006837;
+            }
+            
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KMFRI Updates</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'news')">Latest News</button>
+            <button class="tab-btn" onclick="openTab(event, 'media')">Media</button>
+        </div>
+        
+        <!-- Latest News Tab -->
+        <div id="news" class="tab-content active">
+            <h2>Latest News & Updates</h2>
+            
+            <div class="news-item">
+                <div class="news-date">June 15, 2023</div>
+                <h3 class="news-title"><a href="#">KMFRI Launches New Marine Conservation Initiative</a></h3>
+                <p class="news-excerpt">The Kenya Marine and Fisheries Research Institute has launched a new initiative aimed at protecting endangered marine species along the Kenyan coast...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">June 8, 2023</div>
+                <h3 class="news-title"><a href="#">Researchers Discover New Coral Species in Watamu</a></h3>
+                <p class="news-excerpt">A team of marine biologists from KMFRI has identified a previously unknown coral species in the Watamu Marine National Park...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">May 30, 2023</div>
+                <h3 class="news-title"><a href="#">KMFRI Partners with Local Communities for Sustainable Fishing</a></h3>
+                <p class="news-excerpt">In an effort to promote sustainable fishing practices, KMFRI has entered into partnerships with five fishing communities along Lake Victoria...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <a href="#" class="view-all">View All News</a>
+        </div>
+        
+        <!-- Media Tab -->
+        <div id="media" class="tab-content">
+            <h2>Media Gallery</h2>
+            
+            <div class="media-grid">
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/300x180?text=Research+Vessel" alt="Research Vessel" class="media-thumbnail">
+                    <div class="media-info">
+                        <h3 class="media-title"><a href="#">KMFRI's New Research Vessel</a></h3>
+                        <div class="media-date">May 25, 2023</div>
+                    </div>
+                </div>
+                
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/300x180?text=Coral+Reef" alt="Coral Reef" class="media-thumbnail">
+                    <div class="media-info">
+                        <h3 class="media-title"><a href="#">Coral Restoration Project</a></h3>
+                        <div class="media-date">May 18, 2023</div>
+                    </div>
+                </div>
+                
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/300x180?text=Fishermen+Training" alt="Fishermen Training" class="media-thumbnail">
+                    <div class="media-info">
+                        <h3 class="media-title"><a href="#">Sustainable Fishing Training</a></h3>
+                        <div class="media-date">May 10, 2023</div>
+                    </div>
+                </div>
+                
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/300x180?text=Marine+Lab" alt="Marine Lab" class="media-thumbnail">
+                    <div class="media-info">
+                        <h3 class="media-title"><a href="#">New Marine Microbiology Lab</a></h3>
+                        <div class="media-date">April 28, 2023</div>
+                    </div>
+                </div>
+                
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/300x180?text=Student+Visit" alt="Student Visit" class="media-thumbnail">
+                    <div class="media-info">
+                        <h3 class="media-title"><a href="#">University Students Visit KMFRI</a></h3>
+                        <div class="media-date">April 20, 2023</div>
+                    </div>
+                </div>
+                
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/300x180?text=Conference" alt="Conference" class="media-thumbnail">
+                    <div class="media-info">
+                        <h3 class="media-title"><a href="#">Marine Science Conference 2023</a></h3>
+                        <div class="media-date">April 15, 2023</div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#" class="view-all">View All Media</a>
+        </div>
+    </div>
+    
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tab buttons
+            var tabbuttons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            
+            // Show the current tab and add active class to the button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

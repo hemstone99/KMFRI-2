@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../kmf.png" alt="KMFRI Logo" id="logo">
+            </a>
+            
+            <div class="title-container">
+            </div>
+        </div>
+    </header>
+    <div class="profile-details"></div>
+
+    <!--footer section-->
+    <footer style="background: #46abee; color: #fff; padding: 2rem 0 0 0; margin-top: 0;">
+        <div class="footer-main"
+            style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div class="footer-logo" style="flex: 1 1 200px; margin-bottom: 1.5rem;">
+                <img src="../QRCode-Customer.png" alt="KMFRI Logo"
+                    style="height: 60px; background: #fff; border-radius: 8px; padding: 6px;">
+            </div>
+            <div class="footer-quick-links" style="flex: 2 1 300px; margin-bottom: 1.5rem;">
+                <h4 style="color: #fff;">Quick Links</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li><a href="#about" class="nav-link-inline" data-target="about" style="color: #fff;">Who We Are</a>
+                    </li>
+                    <li><a href="#resources" class="nav-link-inline" data-target="resources"
+                            style="color: #fff;">Downloads</a></li>
+                    <li><a href="#" style="color: #fff;">Staff Mail</a></li>
+                    <li><a href="#research-dissemination" class="nav-link-inline" data-target="research-dissemination"
+                            style="color: #fff;">Research</a></li>
+                    <li><a href="#resources" class="nav-link-inline" data-target="resources"
+                            style="color: #fff;">Vacancies</a></li>
+                    <li><a href="#resources" class="nav-link-inline" data-target="resources"
+                            style="color: #fff;">Tenders</a></li>
+                    <li><a href="#infrastructure-facilities" class="nav-link-inline"
+                            data-target="infrastructure-facilities" style="color: #fff;">Our Facilities</a></li>
+                    <li><a href="#about" class="nav-link-inline" data-target="about" style="color: #fff;">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-contact" style="flex: 2 1 300px; margin-bottom: 1.5rem;">
+                <h4 style="color: #fff;">Contact Us</h4>
+                <p style="margin: 0;">Kenya Marine And Fisheries Research Institute (KMFRI)</p>
+                <p style="margin: 0;">Headquarters: Mombasa, Kenya</p>
+                <p style="margin: 0;">P.O. Box 81651-80100, Mombasa</p>
+                <p style="margin: 0;">Email: <a href="mailto:info@kmfri.go.ke" style="color: #fff;">info@kmfri.go.ke</a>
+                </p>
+                <p style="margin: 0;">Phone: +254208021561 / 0712003853</p>
+            </div>
+            <div class="footer-social" style="flex: 1 1 180px; margin-bottom: 1.5rem;">
+                <h4 style="color: #fff;">Follow Us</h4>
+                <div style="display: flex; gap: 12px;">
+                    <a href="https://facebook.com/kmfri" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/kmfri" target="_blank" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://youtube.com/@kmfri" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/kmfri" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"
+            style="background: #6973f9dc; text-align: center; padding: 1rem 0; margin-top: 1rem;">
+            <p style="margin: 0;">&copy; <span id="current-year"></span> Kenya Marine and Fisheries Research Institute |
+                ISO 9001:2015 Certified | All Rights Reserved.</p>
+        </div>
+    </footer>
+
+  <script>
+    const profile = JSON.parse(sessionStorage.getItem("selectedProfile"));
+    const container = document.querySelector(".profile-details");
+
+    if (profile) {
+      container.innerHTML = `
+        <img src="${profile.user_image}" alt="${profile.user_name}" class="profile-image" />
+        <h2>${profile.user_name}</h2>
+        <h4>${profile.position}</h4>
+        <p>${profile.description || "No description available."}</p>
+        <p><strong>Publications:</strong></p>
+        <ul>
+          <li>${profile.Publication_1 || ""}</li>
+          <li>${profile.Publication_2 || ""}</li>
+          <li>${profile.Publication_3 || ""}</li>
+          <li>${profile.Publication_4 || ""}</li>
+          <li>${profile.Publication_5 || ""}</li>
+        </ul>
+
+        <p><strong>Grants:</strong></p>
+        <ul>
+          <li>${profile.Grants_And_Achievement_1 || ""}</li>
+          <li>${profile.Grants_And_Achievement_2}</li>
+          <li>${profile.Grants_And_Achievement_3}</li>
+          <li>${profile.Grants_And_Achievement_4}</li>
+          <li>${profile.Grants_And_Achievement_5}</li>
+          <li>${profile.Grants_And_Achievement_6}</li>
+          <li>${profile.Grants_And_Achievement_7}</li>
+          <li>${profile.Grants_And_Achievement_8}</li>
+          <li>${profile.Grants_And_Achievement_9}</li>
+        </ul>
+      `;
+    } else {
+      container.innerHTML = "<p>Profile not found. Please go back and select a profile.</p>";
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Publications</title>
+    <style>
+        /* Reusing KMFRI styles with additions */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .publications-container {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            gap: 20px;
+        }
+        .pub-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .pub-main {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .pub-category {
+            margin-bottom: 15px;
+        }
+        .pub-category h3 {
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 12px;
+            margin: 0 -12px;
+        }
+        .pub-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .pub-category li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .pub-category a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .pub-year {
+            margin-bottom: 30px;
+        }
+        .pub-year h2 {
+            color: #004080;
+            border-bottom: 2px solid #004080;
+            padding-bottom: 5px;
+        }
+        .pub-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .pub-item h3 {
+            color: #0066cc;
+            margin-bottom: 5px;
+        }
+        .pub-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        .pub-abstract {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.85em;
+            margin-right: 5px;
+        }
+        .btn-secondary {
+            background-color: #666;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container logo-section">
+            <img src="kmfri-logo.png" alt="KMFRI Logo" height="80">
+            <div>
+                <h2>Kenya Marine and Fisheries Research Institute</h2>
+                <p>Research for Sustainable Aquatic Resources</p>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <div class="container">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Publications</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-title">
+        <div class="container">
+            <h1>KMFRI Publications</h1>
+        </div>
+    </div>
+
+    <div class="container publications-container">
+        <aside class="pub-sidebar">
+            <div class="pub-category">
+                <h3>Publication Types</h3>
+                <ul>
+                    <li><a href="#">Journal Articles</a></li>
+                    <li><a href="#">Technical Reports</a></li>
+                    <li><a href="#">Books & Book Chapters</a></li>
+                    <li><a href="#">Conference Papers</a></li>
+                    <li><a href="#">Policy Briefs</a></li>
+                    <li><a href="#">Theses & Dissertations</a></li>
+                </ul>
+            </div>
+            
+            <div class="pub-category">
+                <h3>Research Themes</h3>
+                <ul>
+                    <li><a href="#">Marine Ecology</a></li>
+                    <li><a href="#">Fisheries Management</a></li>
+                    <li><a href="#">Aquaculture</a></li>
+                    <li><a href="#">Climate Change</a></li>
+                    <li><a href="#">Coastal Management</a></li>
+                    <li><a href="#">Biodiversity</a></li>
+                </ul>
+            </div>
+            
+            <div class="pub-category">
+                <h3>Browse By Year</h3>
+                <ul>
+                    <li><a href="#">2020-2023</a></li>
+                    <li><a href="#">2015-2019</a></li>
+                    <li><a href="#">2010-2014</a></li>
+                    <li><a href="#">2005-2009</a></li>
+                    <li><a href="#">2000-2004</a></li>
+                    <li><a href="#">1990s</a></li>
+                </ul>
+            </div>
+            
+            <div class="pub-category">
+                <h3>Search Publications</h3>
+                <input type="text" placeholder="Search..." style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                <button class="btn">Search</button>
+                <button class="btn btn-secondary">Advanced Search</button>
+            </div>
+        </aside>
+        
+        <main class="pub-main">
+            <h2>Recent Publications</h2>
+            
+            <div class="pub-year">
+                <h2>2023</h2>
+                
+                <div class="pub-item">
+                    <h3>Impacts of Microplastics on Marine Organisms Along the Kenyan Coast</h3>
+                    <div class="pub-meta">
+                        <strong>Authors:</strong> J. Mwangi, L. Atieno, P. Omondi | 
+                        <strong>Journal:</strong> Marine Pollution Bulletin | 
+                        <strong>Volume:</strong> 187 | 
+                        <strong>Pages:</strong> 114-125
+                    </div>
+                    <div class="pub-abstract">
+                        This study documents the prevalence of microplastics in marine organisms and their potential ecological impacts...
+                    </div>
+                    <a href="#" class="btn">View Details</a>
+                    <a href="#" class="btn">Download</a>
+                    <a href="#" class="btn btn-secondary">Cite</a>
+                </div>
+                
+                <div class="pub-item">
+                    <h3>Community-Based Mangrove Restoration: Lessons From Gazi Bay</h3>
+                    <div class="pub-meta">
+                        <strong>Authors:</strong> S. Omar, M. Kazungu | 
+                        <strong>Report No:</strong> KMFRI-TR-2023-15 | 
+                        <strong>Pages:</strong> 45
+                    </div>
+                    <div class="pub-abstract">
+                        Evaluation of a 5-year mangrove restoration project documenting success factors and challenges...
+                    </div>
+                    <a href="#" class="btn">View Details</a>
+                    <a href="#" class="btn">Download</a>
+                    <a href="#" class="btn btn-secondary">Cite</a>
+                </div>
+            </div>
+            
+            <div class="pub-year">
+                <h2>2022</h2>
+                
+                <div class="pub-item">
+                    <h3>Genetic Structure of Commercially Important Fish Species in Lake Turkana</h3>
+                    <div class="pub-meta">
+                        <strong>Authors:</strong> K. Nyongesa, P. Muthoka | 
+                        <strong>Journal:</strong> African Journal of Aquatic Science | 
+                        <strong>Volume:</strong> 47(2) | 
+                        <strong>Pages:</strong> 89-102
+                    </div>
+                    <div class="pub-abstract">
+                        Molecular analysis reveals population structure and implications for fisheries management...
+                    </div>
+                    <a href="#" class="btn">View Details</a>
+                    <a href="#" class="btn">Download</a>
+                    <a href="#" class="btn btn-secondary">Cite</a>
+                </div>
+                
+                <div class="pub-item">
+                    <h3>Climate Change Adaptation Strategies for Coastal Communities in Kenya</h3>
+                    <div class="pub-meta">
+                        <strong>Authors:</strong> L. Wambua, J. Kamau, et al. | 
+                        <strong>Book Chapter in:</strong> Climate Adaptation in Africa | 
+                        <strong>Publisher:</strong> Springer
+                    </div>
+                    <div class="pub-abstract">
+                        Documentation of indigenous knowledge and scientific approaches to climate adaptation...
+                    </div>
+                    <a href="#" class="btn">View Details</a>
+                    <a href="#" class="btn">Download</a>
+                    <a href="#" class="btn btn-secondary">Cite</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn">Load More Publications</button>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <h3>Contact Us</h3>
+                    <p>KMFRI Headquarters, Mombasa</p>
+                    <p>Email: publications@kmfri.go.ke</p>
+                    <p>Phone: +254 41 2312105</p>
+                </div>
+                <div>
+                    <h3>Publication Services</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" style="color: white;">Publish With Us</a></li>
+                        <li><a href="#" style="color: white;">Open Access Policy</a></li>
+                        <li><a href="#" style="color: white;">Editorial Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px;">&copy; 2023 KMFRI Publications. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

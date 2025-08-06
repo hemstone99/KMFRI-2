@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Projects | KMFRI</title>
+    <style>
+        /* Main Styles */
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-blue: #004d99;
+            --accent-teal: #008080;
+            --light-bg: #f5f9fc;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/research-projects-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: #e9ecef;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        /* Projects Content */
+        .projects-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-teal);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Filter Controls */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-info {
+            padding: 25px;
+        }
+        
+        .project-category {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin: 10px 0;
+            color: var(--secondary-blue);
+        }
+        
+        .project-excerpt {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #777;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: var(--primary-blue);
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--accent-teal);
+            text-decoration: underline;
+        }
+        
+        /* Featured Project */
+        .featured-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+        }
+        
+        .featured-image {
+            height: 100%;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .featured-title {
+            font-size: 1.8rem;
+            color: var(--secondary-blue);
+            margin: 10px 0 20px;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent-teal);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .featured-project {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb container">
+        <a href="index.html">Home</a> &gt; <a href="research.html">Research</a> &gt; <span>Projects</span>
+    </div>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Research Projects</h1>
+            <p>Exploring innovative solutions for marine and freshwater ecosystems</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="projects-content container">
+        <!-- Featured Project -->
+        <div class="featured-project">
+            <div class="featured-image">
+                <img src="images/coral-reef-restoration.jpg" alt="Coral Reef Restoration Project">
+            </div>
+            <div class="featured-content">
+                <span class="featured-badge">FEATURED PROJECT</span>
+                <h2 class="featured-title">Sustainable Coral Reef Restoration in the Western Indian Ocean</h2>
+                <p>A regional initiative to restore degraded coral reefs through innovative transplantation techniques and community engagement programs. This project spans five countries and involves over 20 research institutions.</p>
+                <div class="project-meta">
+                    <span><strong>Duration:</strong> 2021-2025</span>
+                    <span><strong>Funding:</strong> $2.5M</span>
+                </div>
+                <a href="projects/coral-reef-restoration.html" class="project-link">View Project Details →</a>
+            </div>
+        </div>
+        
+        <!-- Projects Section -->
+        <div class="section-title">
+            <h2>Our Research Projects</h2>
+            <p>Browse through our current and past research initiatives addressing critical challenges in marine and freshwater ecosystems</p>
+        </div>
+        
+        <!-- Filter Controls -->
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="marine">Marine Ecosystems</button>
+            <button class="filter-btn" data-filter="fisheries">Fisheries</button>
+            <button class="filter-btn" data-filter="aquaculture">Aquaculture</button>
+            <button class="filter-btn" data-filter="climate">Climate Change</button>
+            <button class="filter-btn" data-filter="biodiversity">Biodiversity</button>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="fisheries">
+                <div class="project-image">
+                    <img src="images/fish-stock-assessment.jpg" alt="Fish Stock Assessment">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Fisheries</span>
+                    <h3 class="project-title">Lake Victoria Fish Stock Assessment and Management</h3>
+                    <p class="project-excerpt">Comprehensive assessment of fish stocks in Lake Victoria to inform sustainable management practices and policy recommendations.</p>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> 2022-2024</span>
+                        <span><strong>Status:</strong> Ongoing</span>
+                    </div>
+                    <a href="projects/lake-victoria-stock.html" class="project-link">Learn More →</a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card" data-category="aquaculture">
+                <div class="project-image">
+                    <img src="images/aquaculture-development.jpg" alt="Aquaculture Development">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Aquaculture</span>
+                    <h3 class="project-title">Sustainable Aquaculture Development for Coastal Communities</h3>
+                    <p class="project-excerpt">Developing low-cost, sustainable aquaculture systems to enhance food security and livelihoods in coastal regions.</p>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> 2020-2023</span>
+                        <span><strong>Status:</strong> Completed</span>
+                    </div>
+                    <a href="projects/aquaculture-development.html" class="project-link">Learn More →</a>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card" data-category="marine climate">
+                <div class="project-image">
+                    <img src="images/mangrove-restoration.jpg" alt="Mangrove Restoration">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Marine Ecosystems</span>
+                    <h3 class="project-title">Mangrove Restoration and Carbon Sequestration Project</h3>
+                    <p class="project-excerpt">Quantifying carbon storage potential of restored mangrove ecosystems along Kenya's coastline.</p>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> 2023-2026</span>
+                        <span><strong>Status:</strong> Ongoing</span>
+                    </div>
+                    <a href="projects/mangrove-restoration.html" class="project-link">Learn More →</a>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card" data-category="biodiversity">
+                <div class="project-image">
+                    <img src="images/marine-biodiversity.jpg" alt="Marine Biodiversity">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Biodiversity</span>
+                    <h3 class="project-title">Documentation of Marine Biodiversity in Underexplored Kenyan Reefs</h3>
+                    <p class="project-excerpt">Comprehensive survey of marine species diversity in little-studied reef systems along Kenya's north coast.</p>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> 2021-2022</span>
+                        <span><strong>Status:</strong> Completed</span>
+                    </div>
+                    <a href="projects/marine-biodiversity.html" class="project-link">Learn More →</a>
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card" data-category="climate">
+                <div class="project-image">
+                    <img src="images/ocean-acidification.jpg" alt="Ocean Acidification">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Climate Change</span>
+                    <h3 class="project-title">Impacts of Ocean Acidification on Coastal Ecosystems</h3>
+                    <p class="project-excerpt">Investigating the effects of changing ocean chemistry on coral reefs and shellfish populations.</p>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> 2023-2025</span>
+                        <span><strong>Status:</strong> Ongoing</span>
+                    </div>
+                    <a href="projects/ocean-acidification.html" class="project-link">Learn More →</a>
+                </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="project-card" data-category="fisheries">
+                <div class="project-image">
+                    <img src="images/fishing-gear.jpg" alt="Fishing Gear">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Fisheries</span>
+                    <h3 class="project-title">Development of Selective Fishing Gear to Reduce Bycatch</h3>
+                    <p class="project-excerpt">Designing and testing fishing gear modifications to minimize bycatch of non-target species.</p>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> 2022-2024</span>
+                        <span><strong>Status:</strong> Ongoing</span>
+                    </div>
+                    <a href="projects/fishing-gear.html" class="project-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">45+</div>
+                        <div class="stat-label">Active Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">28M</div>
+                        <div class="stat-label">USD Funding</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Research Partners</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>Partner With Us</h2>
+            <p>Interested in collaborating on research or supporting our projects? We welcome partnerships with government agencies, academic institutions, NGOs, and private sector organizations.</p>
+            <a href="contact.html" class="cta-button">Contact Our Research Team</a>
+        </div>
+    </main>
+    
+    <script>
+        // Simple filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

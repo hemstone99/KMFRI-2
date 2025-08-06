@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Tide Predictions</title>
+    <style>
+        /* Reusing KMFRI styles with additions */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .tide-container {
+            display: grid;
+            grid-template-columns: 30% 70%;
+            gap: 20px;
+        }
+        .tide-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .tide-main {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .station-selector {
+            margin-bottom: 20px;
+        }
+        .station-selector select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .date-selector {
+            margin-bottom: 20px;
+        }
+        .date-selector input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .tide-chart {
+            height: 400px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .chart-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #666;
+        }
+        .tide-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .tide-table th, .tide-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .tide-table th {
+            background-color: #0066cc;
+            color: white;
+        }
+        .tide-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-block {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .info-box {
+            background-color: #e6f2ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="page-title">
+        <div class="container">
+            <h1>Tide Predictions for Kenyan Coast</h1>
+        </div>
+    </div>
+
+    <div class="container tide-container">
+        <aside class="tide-sidebar">
+            <div class="station-selector">
+                <h3>Select Tide Station</h3>
+                <select id="station-select">
+                    <option value="mombasa">Mombasa (Old Port)</option>
+                    <option value="lamu">Lamu</option>
+                    <option value="malindi">Malindi</option>
+                    <option value="kilifi">Kilifi</option>
+                    <option value="diani">Diani</option>
+                </select>
+            </div>
+            
+            <div class="date-selector">
+                <h3>Select Date</h3>
+                <input type="date" id="tide-date" value="2023-11-15">
+                <button class="btn btn-block">Get Predictions</button>
+            </div>
+            
+            <div class="info-box">
+                <h3>About Tide Predictions</h3>
+                <p>Tide predictions are calculated based on harmonic analysis of historical data. Actual tide heights may vary due to weather conditions.</p>
+                <p>All times are in East Africa Time (EAT).</p>
+            </div>
+            
+            <div>
+                <h3>Download Data</h3>
+                <button class="btn btn-block">Daily Tide Table (PDF)</button>
+                <button class="btn btn-block">Annual Tide Tables</button>
+                <button class="btn btn-block">Historical Data</button>
+            </div>
+        </aside>
+        
+        <main class="tide-main">
+            <h2>Tide Predictions for Mombasa - November 15, 2023</h2>
+            
+            <div class="tide-chart">
+                <div class="chart-placeholder">
+                    <p>Tide chart visualization will appear here</p>
+                    <p>(JavaScript chart library would be used in implementation)</p>
+                </div>
+            </div>
+            
+            <h3>Daily Tide Table</h3>
+            <table class="tide-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Height (m)</th>
+                        <th>Tide Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>00:42</td>
+                        <td>3.2</td>
+                        <td>High Tide</td>
+                    </tr>
+                    <tr>
+                        <td>06:18</td>
+                        <td>1.1</td>
+                        <td>Low Tide</td>
+                    </tr>
+                    <tr>
+                        <td>12:55</td>
+                        <td>3.4</td>
+                        <td>High Tide</td>
+                    </tr>
+                    <tr>
+                        <td>18:31</td>
+                        <td>0.9</td>
+                        <td>Low Tide</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Moon Phase</h3>
+            <p>Waxing Crescent (15% illumination)</p>
+            
+            <h3>Tide Information</h3>
+            <div class="info-box">
+                <p><strong>Today's Tides:</strong> Semi-diurnal (two high and two low tides daily)</p>
+                <p><strong>Tide Range:</strong> 2.5m (difference between high and low tide)</p>
+                <p><strong>Next Spring Tide:</strong> November 20-23 (higher than normal tides)</p>
+                <p><strong>Next Neap Tide:</strong> November 27-30 (lower than normal tides)</p>
+            </div>
+        </main>
+    </div>
+
+
+    <script>
+        // Simple JavaScript for tide prediction page
+        document.getElementById('station-select').addEventListener('change', function() {
+            const station = this.value;
+            // In a real implementation, this would fetch data for the selected station
+            updateTideDisplay(station);
+        });
+        
+        document.getElementById('tide-date').addEventListener('change', function() {
+            const date = this.value;
+            // In a real implementation, this would fetch data for the selected date
+            updateTideDisplay(null, date);
+        });
+        
+        function updateTideDisplay(station, date) {
+            // This function would update the tide chart and table
+            console.log('Updating display for:', station || 'current station', date || 'current date');
+        }
+    </script>
+</body>
+</html>

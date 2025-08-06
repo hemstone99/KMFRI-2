@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Reports | KMFRI</title>
+    <style>
+        /* Main Styles */
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-blue: #004d99;
+            --accent-teal: #008080;
+            --light-bg: #f5f9fc;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --highlight-yellow: #fff9e6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/annual-reports-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: #e9ecef;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        /* Reports Content */
+        .reports-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-teal);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Latest Report Highlight */
+        .featured-report {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+        }
+        
+        .report-cover {
+            background-color: #f1f7fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .report-cover img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .report-details {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .report-year {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .report-title {
+            font-size: 1.8rem;
+            color: var(--secondary-blue);
+            margin: 10px 0 20px;
+        }
+        
+        .report-downloads {
+            margin-top: 30px;
+        }
+        
+        .download-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .download-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--accent-teal);
+        }
+        
+        .download-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .download-link:hover {
+            color: var(--accent-teal);
+            text-decoration: underline;
+        }
+        
+        /* Reports Archive */
+        .reports-archive {
+            margin-top: 60px;
+        }
+        
+        .archive-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .report-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            height: 180px;
+            background-color: #f1f7fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card-image img {
+            max-width: 100%;
+            max-height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-year {
+            color: var(--accent-teal);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            color: var(--secondary-blue);
+            margin: 10px 0;
+        }
+        
+        .card-download {
+            display: inline-block;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .card-download:hover {
+            color: var(--accent-teal);
+            text-decoration: underline;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .featured-report {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-cover {
+                padding: 30px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .archive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb container">
+        <a href="index.html">Home</a> &gt; <a href="about.html">About Us</a> &gt; <span>Annual Reports</span>
+    </div>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Annual Reports</h1>
+            <p>Documenting our research achievements and institutional progress</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="reports-content container">
+        <!-- Featured Report -->
+        <div class="featured-report">
+            <div class="report-cover">
+                <img src="images/annual-report-2023-cover.jpg" alt="KMFRI Annual Report 2023 Cover">
+            </div>
+            <div class="report-details">
+                <span class="report-year">2025</span>
+                <h2 class="report-title">KMFRI Annual Report & Financial Statements 2025</h2>
+                <p>Our latest annual report highlights key research findings, institutional achievements, financial performance, and strategic developments from the 2025 fiscal year. The report showcases our contributions to marine science and sustainable fisheries management in Kenya.</p>
+                
+                <div class="report-downloads">
+                    <div class="download-option">
+                        <span class="download-icon">📥</span>
+                        <a href="reports/annual-report-2025-full.pdf" class="download-link">Download Full Report (PDF, 8.4MB)</a>
+                    </div>
+                    <div class="download-option">
+                        <span class="download-icon">📥</span>
+                        <a href="reports/annual-report-2025-summary.pdf" class="download-link">Download Executive Summary (PDF, 2.1MB)</a>
+                    </div>
+                    <div class="download-option">
+                        <span class="download-icon">📊</span>
+                        <a href="reports/annual-report-2025-data.xlsx" class="download-link">Download Supplementary Data (Excel, 1.7MB)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Reports Archive -->
+        <div class="reports-archive">
+            <div class="section-title">
+                <h2>Report Archive</h2>
+                <p>Access our historical annual reports and publications</p>
+            </div>
+            
+            <!-- Filter Controls -->
+            <div class="archive-filter">
+                <button class="filter-btn active" data-filter="all">All Years</button>
+                <button class="filter-btn" data-filter="2020s">2020s</button>
+                <button class="filter-btn" data-filter="2010s">2010s</button>
+                <button class="filter-btn" data-filter="2000s">2000s</button>
+                <button class="filter-btn" data-filter="1990s">1990s</button>
+            </div>
+            
+            <!-- Reports Grid -->
+            <div class="archive-grid">
+                <!-- Report 2025 -->
+                <div class="report-card" data-year="2020s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2025-thumb.jpg" alt="2025 Report Cover">
+                    </div>
+                </div>
+                    <div class="card-body">
+                        <div class="card-year">2025</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2025.pdf" class="card-download">Download PDF (8.4MB)</a>
+                    </div>
+                </div>
+
+                <!-- Report 2024 -->
+                <div class="report-card" data-year="2020s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2024-thumb.jpg" alt="2024 Report Cover">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-year">2024</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2024.pdf" class="card-download">Download PDF (8.0MB)</a>
+                    </div>
+                </div>
+
+                <!-- Report 2023 -->
+                <div class="report-card" data-year="2020s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2023-thumb.jpg" alt="2023 Report Cover">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-year">2023</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2023.pdf" class="card-download">Download PDF (8.1MB)</a>
+                    </div>
+                </div>  
+
+                <!-- Report 2022 -->
+                <div class="report-card" data-year="2020s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2022-thumb.jpg" alt="2022 Report Cover">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-year">2022</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2022.pdf" class="card-download">Download PDF (7.8MB)</a>
+                    </div>
+                </div>
+                
+                <!-- Report 2021 -->
+                <div class="report-card" data-year="2020s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2021-thumb.jpg" alt="2021 Report Cover">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-year">2021</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2021.pdf" class="card-download">Download PDF (6.9MB)</a>
+                    </div>
+                </div>
+                
+                <!-- Report 2020 -->
+                <div class="report-card" data-year="2020s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2020-thumb.jpg" alt="2020 Report Cover">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-year">2020</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2020.pdf" class="card-download">Download PDF (7.2MB)</a>
+                    </div>
+                </div>
+                
+                <!-- Report 2019 -->
+                <div class="report-card" data-year="2010s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2019-thumb.jpg" alt="2019 Report Cover">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-year">2019</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2019.pdf" class="card-download">Download PDF (6.5MB)</a>
+                    </div>
+                </div>
+                
+                <!-- Report 2018 -->
+                <div class="report-card" data-year="2010s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2018-thumb.jpg" alt="2018 Report Cover">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-year">2018</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2018.pdf" class="card-download">Download PDF (5.7MB)</a>
+                    </div>
+                </div>
+                
+                <!-- Report 2017 -->
+                <div class="report-card" data-year="2010s">
+                    <div class="card-image">
+                        <img src="images/annual-report-2017-thumb.jpg" alt="2017 Report Cover">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-year">2017</div>
+                        <h3 class="card-title">Annual Report & Financial Statements</h3>
+                        <a href="reports/annual-report-2017.pdf" class="card-download">Download PDF (5.3MB)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="container">
+                <h2 style="margin-top: 0;">Our Reporting Impact</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">35+</div>
+                        <div class="stat-label">Years of Reporting</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Research Projects Documented</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Annual Downloads</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const reportCards = document.querySelectorAll('.report-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter reports
+                    reportCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-year') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

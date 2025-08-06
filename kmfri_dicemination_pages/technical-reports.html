@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Technical Reports</title>
+    <style>
+        /* Reusing KMFRI styles with additions */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .reports-container {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            gap: 20px;
+        }
+        .reports-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .reports-main {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        .filter-section h3 {
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 12px;
+            margin: 0 -12px;
+        }
+        .filter-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .filter-section li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .filter-section a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .report-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .report-item h2 {
+            color: #004080;
+            margin-bottom: 5px;
+        }
+        .report-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .report-abstract {
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.85em;
+            margin-right: 5px;
+        }
+        .btn-outline {
+            background: white;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #0066cc;
+        }
+        .pagination a.active {
+            background-color: #0066cc;
+            color: white;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+  
+
+    <div class="page-title">
+        <div class="container">
+            <h1>Technical & Status Reports</h1>
+        </div>
+    </div>
+
+    <div class="container reports-container">
+        <aside class="reports-sidebar">
+            <div class="search-box">
+                <h3>Search Reports</h3>
+                <input type="text" placeholder="Enter keywords...">
+                <button class="btn" style="width: 100%;">Search</button>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Report Type</h3>
+                <ul>
+                    <li><a href="#">Technical Reports</a></li>
+                    <li><a href="#">Annual Reports</a></li>
+                    <li><a href="#">Project Reports</a></li>
+                    <li><a href="#">Status Reports</a></li>
+                    <li><a href="#">Monitoring Reports</a></li>
+                </ul>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Research Theme</h3>
+                <ul>
+                    <li><a href="#">Fisheries</a></li>
+                    <li><a href="#">Aquaculture</a></li>
+                    <li><a href="#">Marine Ecology</a></li>
+                    <li><a href="#">Climate Change</a></li>
+                    <li><a href="#">Coastal Management</a></li>
+                </ul>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Time Period</h3>
+                <ul>
+                    <li><a href="#">2020-2023</a></li>
+                    <li><a href="#">2015-2019</a></li>
+                    <li><a href="#">2010-2014</a></li>
+                    <li><a href="#">2000-2009</a></li>
+                </ul>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Download Options</h3>
+                <ul>
+                    <li><a href="#">Most Downloaded</a></li>
+                    <li><a href="#">New Additions</a></li>
+                    <li><a href="#">Featured Reports</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <main class="reports-main">
+            <h2>Recent Technical Reports</h2>
+            
+            <div class="report-item">
+                <h2>Status of Coral Reefs in Marine Protected Areas Along the Kenyan Coast (2023)</h2>
+                <div class="report-meta">
+                    <span><strong>Authors:</strong> J. Kamau, M. Achieng, P. Onyango</span> | 
+                    <span><strong>Report No:</strong> KMFRI-TR-2023-45</span> | 
+                    <span><strong>Pages:</strong> 78</span> | 
+                    <span><strong>Published:</strong> August 2023</span>
+                </div>
+                <div class="report-abstract">
+                    <p>This report presents findings from a comprehensive survey of coral reef health in Kenya's marine protected areas, including Watamu, Kisite-Mpunguti, and Malindi Marine Parks. The study documents coral cover, species diversity, and threats to reef ecosystems, providing recommendations for improved management.</p>
+                </div>
+                <a href="#" class="btn">Download Full Report (PDF)</a>
+                <a href="#" class="btn btn-outline">Executive Summary</a>
+                <a href="#" class="btn btn-outline">Supplementary Data</a>
+            </div>
+            
+            <div class="report-item">
+                <h2>Annual Fisheries Status Report for Lake Victoria (2022)</h2>
+                <div class="report-meta">
+                    <span><strong>Authors:</strong> S. Mwangi, L. Nyongesa, K. Otieno</span> | 
+                    <span><strong>Report No:</strong> KMFRI-ASR-2022-12</span> | 
+                    <span><strong>Pages:</strong> 112</span> | 
+                    <span><strong>Published:</strong> March 2023</span>
+                </div>
+                <div class="report-abstract">
+                    <p>The annual status report provides an overview of fish landings, species composition, and fishing effort in the Kenyan portion of Lake Victoria. It includes data from all major landing beaches and analysis of trends in Nile perch, tilapia, and dagaa fisheries, with comparisons to previous years.</p>
+                </div>
+                <a href="#" class="btn">Download Full Report (PDF)</a>
+                <a href="#" class="btn btn-outline">Data Tables (Excel)</a>
+            </div>
+            
+            <div class="report-item">
+                <h2>Technical Guidelines for Sustainable Seaweed Farming in Kenya</h2>
+                <div class="report-meta">
+                    <span><strong>Authors:</strong> P. Muthoka, J. Wambua, et al.</span> | 
+                    <span><strong>Report No:</strong> KMFRI-TG-2023-08</span> | 
+                    <span><strong>Pages:</strong> 64</span> | 
+                    <span><strong>Published:</strong> June 2023</span>
+                </div>
+                <div class="report-abstract">
+                    <p>This technical guide provides best practices for seaweed farming along the Kenyan coast, covering site selection, farming methods, pest and disease management, and post-harvest handling. The guidelines are based on five years of research and farmer participatory trials.</p>
+                </div>
+                <a href="#" class="btn">Download Full Report (PDF)</a>
+                <a href="#" class="btn btn-outline">Farmer's Handbook</a>
+            </div>
+            
+            <div class="report-item">
+                <h2>Baseline Survey for the Kenya Coastal Development Project - Final Report</h2>
+                <div class="report-meta">
+                    <span><strong>Authors:</strong> KMFRI Research Team</span> | 
+                    <span><strong>Report No:</strong> KCDP-BS-2021-01</span> | 
+                    <span><strong>Pages:</strong> 145</span> | 
+                    <span><strong>Published:</strong> January 2022</span>
+                </div>
+                <div class="report-abstract">
+                    <p>Comprehensive baseline data for the Kenya Coastal Development Project, documenting ecological and socio-economic conditions in the project area prior to implementation. Includes marine resource assessments, household surveys, and institutional capacity evaluations across five coastal counties.</p>
+                </div>
+                <a href="#" class="btn">Download Full Report (PDF)</a>
+                <a href="#" class="btn btn-outline">Annexes</a>
+                <a href="#" class="btn btn-outline">Survey Instruments</a>
+            </div>
+            
+            <div class="pagination">
+                <a href="#">&laquo; Previous</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next &raquo;</a>
+            </div>
+        </main>
+    </div>
+
+
+</body>
+</html>

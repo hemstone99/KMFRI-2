@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our History | KMFRI</title>
+    <style>
+        :root {
+            --deep-blue: #005b96;
+            --light-teal: #00b4d8;
+            --seafoam: #90e0ef;
+            --sand: #f8f3e6;
+            --coral: #ff6b6b;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: var(--sand);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 91, 150, 0.8), rgba(0, 91, 150, 0.8)), url('images/history-bg.jpg');
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            background-size: cover;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--light-teal);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid var(--deep-blue);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .timeline-content h3 {
+            color: var(--deep-blue);
+            margin-top: 0;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="container">
+            <h1>Our History</h1>
+            <p>Over four decades of marine research excellence in Kenya</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1979 - Establishment</h3>
+                    <p>KMFRI was established through Legal Notice No. 154 of 1979 as a state corporation under the Ministry of Agriculture and Livestock Development.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>1980s - Foundational Research</h3>
+                    <p>Conducted baseline surveys of Kenya's marine ecosystems and established the first marine research stations along the coast.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1990 - Headquarters Relocation</h3>
+                    <p>Moved headquarters from Mombasa to its current location in Mtwapa to accommodate growing research programs.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2002 - Lake Victoria Expansion</h3>
+                    <p>Established the Kisumu Research Center to address freshwater fisheries research needs in Lake Victoria.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2013 - ISO Certification</h3>
+                    <p>Achieved ISO 9001:2008 certification for quality management systems in research services.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2020 - Blue Economy Focus</h3>
+                    <p>Realigned research priorities to support Kenya's Blue Economy initiatives and sustainable development goals.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section style="background-color: white; padding: 40px; border-radius: 8px; margin: 50px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--deep-blue);">Our Legacy</h2>
+            <p>From humble beginnings with a small team of marine biologists, KMFRI has grown into a regional leader in marine and freshwater research. Our scientists have:</p>
+            <ul>
+                <li>Discovered and documented over 500 marine species in Kenyan waters</li>
+                <li>Developed sustainable fishing practices adopted throughout East Africa</li>
+                <li>Pioneered coral reef restoration techniques now used internationally</li>
+                <li>Trained generations of marine scientists working across Africa</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

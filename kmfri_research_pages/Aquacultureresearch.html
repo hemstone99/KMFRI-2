@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquaculture Research | KMFRI</title>
+    <style>
+        :root {
+            --deep-blue: #005b96;
+            --light-teal: #00b4d8;
+            --seafoam: #90e0ef;
+            --sand: #f8f3e6;
+            --aqua-green: #2ecc71;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: var(--sand);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 91, 150, 0.7), rgba(0, 91, 150, 0.7)), url('images/aquaculture-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .systems {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .system-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .system-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .system-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .system-card:hover .system-image img {
+            transform: scale(1.05);
+        }
+        
+        .system-content {
+            padding: 25px;
+        }
+        
+        .system-content h3 {
+            color: var(--aqua-green);
+            margin-top: 0;
+        }
+        
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .species-card {
+            background: var(--seafoam);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .species-card h4 {
+            color: var(--deep-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Aquaculture Research</h1>
+        <p>Developing sustainable fish farming technologies for food security and livelihoods</p>
+    </section>
+    
+    <main class="container">
+        <section>
+            <h2 style="color: var(--deep-blue); text-align: center;">About Our Aquaculture Research</h2>
+            <p style="text-align: center;">KMFRI's aquaculture research focuses on developing innovative, sustainable fish farming systems to enhance food security, create employment, and reduce pressure on wild fish stocks.</p>
+            
+            <div class="systems">
+                <div class="system-card">
+                    <div class="system-image">
+                        <img src="images/pond-aquaculture.jpg" alt="Pond Aquaculture">
+                    </div>
+                    <div class="system-content">
+                        <h3>Pond Culture Systems</h3>
+                        <p>Research on optimized pond designs, water quality management, and polyculture techniques for small-scale farmers.</p>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-image">
+                        <img src="images/cage-culture.jpg" alt="Cage Culture">
+                    </div>
+                    <div class="system-content">
+                        <h3>Cage Culture</h3>
+                        <p>Innovations in lake-based cage farming for tilapia and other freshwater species.</p>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-image">
+                        <img src="images/hatchery.jpg" alt="Hatchery Technology">
+                    </div>
+                    <div class="system-content">
+                        <h3>Hatchery Technology</h3>
+                        <p>Advanced breeding techniques for improved fish seed production.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 style="color: var(--deep-blue);">Research Focus Species</h2>
+            
+            <div class="species-grid">
+                <div class="species-card">
+                    <h4>African Catfish</h4>
+                    <p>(Clarias gariepinus)</p>
+                </div>
+                
+                <div class="species-card">
+                    <h4>Nile Tilapia</h4>
+                    <p>(Oreochromis niloticus)</p>
+                </div>
+                
+                <div class="species-card">
+                    <h4>Rainbow Trout</h4>
+                    <p>(Oncorhynchus mykiss)</p>
+                </div>
+                
+                <div class="species-card">
+                    <h4>Marine Shrimp</h4>
+                    <p>(Penaeus monodon)</p>
+                </div>
+                
+                <div class="species-card">
+                    <h4>Seaweed</h4>
+                    <p>(Eucheuma spp.)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section style="background: white; padding: 40px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin: 50px 0;">
+            <h2 style="color: var(--deep-blue);">Recent Breakthroughs</h2>
+            <ul>
+                <li>Development of low-cost fish feeds using locally available ingredients</li>
+                <li>Improved breeding protocols for fast-growing tilapia strains</li>
+                <li>Integrated aquaculture-agriculture systems for smallholder farmers</li>
+                <li>Biofloc technology for intensive fish production</li>
+            </ul>
+            
+            <a href="publications/aquaculture.html" style="display: inline-block; background: var(--aqua-green); color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; margin-top: 20px;">View Aquaculture Publications</a>
+        </section>
+    </main>
+</body>
+</html>

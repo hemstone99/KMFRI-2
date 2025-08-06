@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO & QMS Documents | KMFRI</title>
+    <style>
+        /* Main Styles */
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-blue: #004d99;
+            --accent-teal: #008080;
+            --light-bg: #f5f9fc;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --highlight-yellow: #fff9e6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/iso-qms-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: #e9ecef;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        /* Main Content */
+        .documents-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-teal);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Certification Badges */
+        .certification-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        .badge {
+            text-align: center;
+            max-width: 200px;
+        }
+        
+        .badge-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        .badge-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .badge-title {
+            font-weight: 600;
+            color: var(--secondary-blue);
+        }
+        
+        /* Documents Section */
+        .documents-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+        
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .document-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            border-left: 4px solid var(--accent-teal);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .document-category {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .document-title {
+            font-size: 1.2rem;
+            color: var(--secondary-blue);
+            margin: 10px 0;
+        }
+        
+        .document-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .document-download {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .document-download:hover {
+            background-color: var(--accent-teal);
+        }
+        
+        /* Quality Policy */
+        .quality-policy {
+            background-color: var(--highlight-yellow);
+            border-left: 4px solid var(--accent-teal);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .quality-policy h3 {
+            color: var(--secondary-blue);
+            margin-top: 0;
+        }
+        
+        /* Process Flow */
+        .process-flow {
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .process-flow img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 50px;
+            border-radius: 8px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--secondary-blue);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--accent-teal);
+            color: white;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .certification-badges {
+                gap: 20px;
+            }
+            
+            .badge {
+                max-width: 130px;
+            }
+            
+            .badge-image {
+                width: 100px;
+                height: 100px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb container">
+        <a href="index.html">Home</a> &gt; <a href="about.html">About Us</a> &gt; <span>ISO & QMS Documents</span>
+    </div>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>ISO & Quality Management System</h1>
+            <p>Our commitment to quality standards and continuous improvement</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="documents-content container">
+        <!-- Introduction -->
+        <section class="documents-section">
+            <h2>Quality Management at KMFRI</h2>
+            <p>The Kenya Marine and Fisheries Research Institute (KMFRI) is committed to maintaining the highest standards of quality in all our research and operations. Our Quality Management System (QMS) is certified to international standards, ensuring consistent quality in our services and continuous improvement in our processes.</p>
+            
+            <div class="quality-policy">
+                <h3>Our Quality Policy</h3>
+                <p>"KMFRI is committed to providing quality marine and fisheries research services that meet customer and applicable statutory and regulatory requirements. We achieve this through continuous improvement of our Quality Management System and the competence of our staff, ensuring the sustainable utilization of aquatic resources."</p>
+            </div>
+        </section>
+        
+        <!-- Certifications -->
+        <div class="section-title">
+            <h2>Our Certifications</h2>
+            <p>KMFRI maintains certification to the following international standards</p>
+        </div>
+        
+        <div class="certification-badges">
+            <div class="badge">
+                <div class="badge-image">
+                    <img src="images/iso-9001-logo.png" alt="ISO 9001 Certification">
+                </div>
+                <div class="badge-title">ISO 9001:2015</div>
+                <div>Quality Management</div>
+            </div>
+            
+            <div class="badge">
+                <div class="badge-image">
+                    <img src="images/iso-17025-logo.png" alt="ISO 17025 Certification">
+                </div>
+                <div class="badge-title">ISO/IEC 17025:2017</div>
+                <div>Laboratory Competence</div>
+            </div>
+            
+            <div class="badge">
+                <div class="badge-image">
+                    <img src="images/ohsas-18001-logo.png" alt="OHSAS 18001 Certification">
+                </div>
+                <div class="badge-title">OHSAS 18001:2007</div>
+                <div>Occupational Health & Safety</div>
+            </div>
+        </div>
+        
+        <!-- Documents Section -->
+        <section class="documents-section">
+            <h2>QMS Documents</h2>
+            <p>Access our quality management system documentation below. These documents outline our processes, procedures, and quality standards.</p>
+            
+            <div class="documents-grid">
+                <!-- Document 1 -->
+                <div class="document-card">
+                    <span class="document-category">Policy</span>
+                    <h3 class="document-title">Quality Manual</h3>
+                    <div class="document-meta">Version 3.2 | Updated: Jan 2024</div>
+                    <p>The overarching document describing our QMS framework and commitments.</p>
+                    <a href="qms/quality-manual.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <!-- Document 2 -->
+                <div class="document-card">
+                    <span class="document-category">Procedure</span>
+                    <h3 class="document-title">Document Control Procedure</h3>
+                    <div class="document-meta">Version 2.1 | Updated: Mar 2024</div>
+                    <p>Processes for creating, approving, and updating QMS documents.</p>
+                    <a href="qms/document-control-procedure.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <!-- Document 3 -->
+                <div class="document-card">
+                    <span class="document-category">Process</span>
+                    <h3 class="document-title">Research Project Management</h3>
+                    <div class="document-meta">Version 1.5 | Updated: Feb 2024</div>
+                    <p>Standard procedures for initiating, executing, and closing research projects.</p>
+                    <a href="qms/research-project-management.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <!-- Document 4 -->
+                <div class="document-card">
+                    <span class="document-category">Form</span>
+                    <h3 class="document-title">Non-Conformance Report</h3>
+                    <div class="document-meta">Version 2.0 | Updated: Dec 2023</div>
+                    <p>Template for reporting deviations from quality standards.</p>
+                    <a href="qms/non-conformance-form.docx" class="document-download">Download DOCX</a>
+                </div>
+                
+                <!-- Document 5 -->
+                <div class="document-card">
+                    <span class="document-category">Guideline</span>
+                    <h3 class="document-title">Laboratory Quality Control</h3>
+                    <div class="document-meta">Version 4.1 | Updated: Apr 2024</div>
+                    <p>Procedures for maintaining quality in laboratory analyses.</p>
+                    <a href="qms/lab-quality-control.pdf" class="document-download">Download PDF</a>
+                </div>
+                
+                <!-- Document 6 -->
+                <div class="document-card">
+                    <span class="document-category">Policy</span>
+                    <h3 class="document-title">Health & Safety Manual</h3>
+                    <div class="document-meta">Version 1.3 | Updated: Nov 2023</div>
+                    <p>Our occupational health and safety policies and procedures.</p>
+                    <a href="qms/health-safety-manual.pdf" class="document-download">Download PDF</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Process Flow -->
+        <div class="section-title">
+            <h2>Our Quality Process Flow</h2>
+            <p>Visual representation of our quality management system processes</p>
+        </div>
+        
+        <div class="process-flow">
+            <img src="images/qms-process-flow.png" alt="KMFRI Quality Management System Process Flow">
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>Quality Management Team</h2>
+            <p>For questions about our Quality Management System or to report quality concerns, please contact our QMS Office.</p>
+            <a href="contact.html?department=qms" class="contact-btn">Contact QMS Office</a>
+        </div>
+    </main>
+</body>
+</html>

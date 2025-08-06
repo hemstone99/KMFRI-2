@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Laboratories | KMFRI</title>
+    <style>
+        :root {
+            --deep-blue: #005b96;
+            --light-teal: #00b4d8;
+            --seafoam: #90e0ef;
+            --sand: #f8f3e6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: var(--sand);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 91, 150, 0.8), rgba(0, 91, 150, 0.8)), url('images/labs-bg.jpg');
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .lab-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background: var(--deep-blue);
+            color: white;
+        }
+        
+        .lab-content {
+            display: none;
+        }
+        
+        .lab-content.active {
+            display: block;
+        }
+        
+        .lab-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .equipment-item {
+            background: var(--seafoam);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .lab-image {
+            height: 300px;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .lab-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .booking-box {
+            background: var(--seafoam);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="container">
+            <h1>Research Laboratories</h1>
+            <p>State-of-the-art facilities for marine and freshwater research</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="lab-tabs">
+            <button class="tab-btn active" data-tab="central">Central Laboratories</button>
+            <button class="tab-btn" data-tab="field">Field Station Labs</button>
+            <button class="tab-btn" data-tab="specialized">Specialized Units</button>
+        </div>
+        
+        <section id="central" class="lab-content active">
+            <div class="lab-card">
+                <h2 style="color: var(--deep-blue);">Central Research Laboratories</h2>
+                <p>Located at KMFRI Headquarters in Mtwapa, our central laboratories provide comprehensive analytical capabilities for marine and freshwater research.</p>
+                
+                <div class="lab-image">
+                    <img src="/asset_lab_aquaculture.png" alt="Central Laboratories">
+                </div>
+                
+                <h3>Core Facilities</h3>
+                <div class="equipment-grid">
+                    <div class="equipment-item">
+                        <strong>Water Chemistry Lab</strong>
+                        <p>Nutrient analysis, salinity measurements, dissolved oxygen</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>Microbiology Lab</strong>
+                        <p>Bacterial cultivation, water quality testing, pathogen analysis</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>Molecular Biology Lab</strong>
+                        <p>DNA extraction, PCR, genetic analysis of marine organisms</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>Fisheries Lab</strong>
+                        <p>Species identification, age determination, stock assessment</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="field" class="lab-content">
+            <div class="lab-card">
+                <h2 style="color: var(--deep-blue);">Field Station Laboratories</h2>
+                <p>Our network of field laboratories located along the coast and inland water bodies provides localized research capabilities.</p>
+                
+                <div class="lab-image">
+                    <img src="/asset_lab_freshwater.png" alt="Field Laboratory">
+                </div>
+                
+                <h3>Key Field Labs</h3>
+                <div class="equipment-grid">
+                    <div class="equipment-item">
+                        <strong>Mombasa Marine Lab</strong>
+                        <p>Coral reef studies, coastal ecology, mangrove research</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>Kisumu Freshwater Lab</strong>
+                        <p>Lake Victoria fisheries, water quality monitoring</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>Malindi Marine Lab</strong>
+                        <p>Marine biodiversity, turtle conservation, seagrass studies</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>Shimoni Marine Lab</strong>
+                        <p>Marine protected area research, fisheries ecology</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="specialized" class="lab-content">
+            <div class="lab-card">
+                <h2 style="color: var(--deep-blue);">Specialized Research Units</h2>
+                <p>Dedicated facilities for advanced marine research applications.</p>
+                
+                <div class="lab-image">
+                    <img src="/asset_lab_ocean.png" alt="Specialized Laboratory">
+                </div>
+                
+                <h3>Specialized Facilities</h3>
+                <div class="equipment-grid">
+                    <div class="equipment-item">
+                        <strong>Marine Biotechnology Unit</strong>
+                        <p>Bioactive compound research, algal cultivation</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>Climate Change Lab</strong>
+                        <p>Ocean acidification studies, temperature stress experiments</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>Aquaculture Hatchery</strong>
+                        <p>Broodstock management, larval rearing, feed research</p>
+                    </div>
+                    <div class="equipment-item">
+                        <strong>GIS & Remote Sensing</strong>
+                        <p>Marine spatial planning, habitat mapping</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="booking-box">
+            <h2 style="color: var(--deep-blue);">Laboratory Access</h2>
+            <p>KMFRI laboratories are available for use by qualified researchers through our collaborative research programs. Laboratory access requires:</p>
+            <ul>
+                <li>Approved research proposal</li>
+                <li>Safety training certification</li>
+                <li>Memorandum of Understanding for institutional collaborations</li>
+                <li>Advance booking (minimum 2 weeks notice)</li>
+            </ul>
+            <p><strong>Contact:</strong> laboratories@kmfri.go.ke | +254 722 345678</p>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide all content
+                    document.querySelectorAll('.lab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show selected content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

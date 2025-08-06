@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Digital Maps</title>
+    <style>
+        /* Reusing KMFRI styles with additions */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .maps-container {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            gap: 20px;
+        }
+        .maps-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .maps-main {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .map-category {
+            margin-bottom: 15px;
+        }
+        .map-category h3 {
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 12px;
+            margin: 0 -12px;
+        }
+        .map-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .map-category li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .map-category a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .map-viewer {
+            height: 500px;
+            background-color: #eee;
+            margin-bottom: 20px;
+            position: relative;
+            border: 1px solid #ddd;
+        }
+        .map-toolbar {
+            background-color: #004080;
+            padding: 10px;
+            color: white;
+            display: flex;
+            gap: 10px;
+        }
+        .map-toolbar button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .map-legend {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .map-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .map-thumbnail {
+            flex: 0 0 200px;
+            margin-right: 20px;
+        }
+        .map-thumbnail img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        .map-details {
+            flex: 1;
+        }
+        .map-details h3 {
+            color: #0066cc;
+            margin-top: 0;
+        }
+        .map-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.85em;
+            margin-right: 5px;
+        }
+        .btn-outline {
+            background: white;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="page-title">
+        <div class="container">
+            <h1>Digital Maps of Kenya</h1>
+        </div>
+    </div>
+
+    <div class="container maps-container">
+        <aside class="maps-sidebar">
+            <div class="map-category">
+                <h3>Map Categories</h3>
+                <ul>
+                    <li><a href="#">Fisheries Resources</a></li>
+                    <li><a href="#">Marine Protected Areas</a></li>
+                    <li><a href="#">Aquaculture Sites</a></li>
+                    <li><a href="#">Coastal Ecosystems</a></li>
+                    <li><a href="#">Oceanographic Data</a></li>
+                    <li><a href="#">Climate Change</a></li>
+                </ul>
+            </div>
+            
+            <div class="map-category">
+                <h3>Water Bodies</h3>
+                <ul>
+                    <li><a href="#">Indian Ocean</a></li>
+                    <li><a href="#">Lake Victoria</a></li>
+                    <li><a href="#">Lake Turkana</a></li>
+                    <li><a href="#">Lake Naivasha</a></li>
+                    <li><a href="#">Rivers & Estuaries</a></li>
+                </ul>
+            </div>
+            
+            <div class="map-category">
+                <h3>Download Formats</h3>
+                <ul>
+                    <li><a href="#">PDF</a></li>
+                    <li><a href="#">JPEG</a></li>
+                    <li><a href="#">Shapefile</a></li>
+                    <li><a href="#">GeoTIFF</a></li>
+                    <li><a href="#">KML</a></li>
+                </ul>
+            </div>
+            
+            <div class="map-category">
+                <h3>Map Tools</h3>
+                <ul>
+                    <li><a href="#">Create Custom Map</a></li>
+                    <li><a href="#">GIS Resources</a></li>
+                    <li><a href="#">Metadata Search</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <main class="maps-main">
+            <div class="map-viewer">
+                <div class="map-toolbar">
+                    <button>Zoom In</button>
+                    <button>Zoom Out</button>
+                    <button>Pan</button>
+                    <button>Identify</button>
+                    <button>Print</button>
+                    <select>
+                        <option>Base Map</option>
+                        <option>Satellite</option>
+                        <option>Topographic</option>
+                    </select>
+                </div>
+                <div class="map-legend">
+                    <h4>Legend</h4>
+                    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                        <div style="width: 20px; height: 20px; background-color: blue; margin-right: 5px;"></div>
+                        <span>Marine Protected Areas</span>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                        <div style="width: 20px; height: 20px; background-color: green; margin-right: 5px;"></div>
+                        <span>Mangrove Forests</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 20px; height: 20px; background-color: red; margin-right: 5px;"></div>
+                        <span>Fish Landing Sites</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Featured Maps</h2>
+            
+            <div class="map-item">
+                <div class="map-thumbnail">
+                    <img src="map1.jpg" alt="Fisheries Map">
+                </div>
+                <div class="map-details">
+                    <h3>Kenya Marine Fisheries Resources (2023)</h3>
+                    <div class="map-meta">
+                        <span><strong>Scale:</strong> 1:250,000</span> | 
+                        <span><strong>Projection:</strong> WGS84</span> | 
+                        <span><strong>Date:</strong> March 2023</span>
+                    </div>
+                    <p>Shows distribution of key fish species, fishing grounds, and landing sites along the Kenyan coast. Includes data on catch per unit effort (CPUE) for the last 5 years.</p>
+                    <a href="#" class="btn">View Full Map</a>
+                    <a href="#" class="btn btn-outline">Download</a>
+                    <a href="#" class="btn btn-outline">Metadata</a>
+                </div>
+            </div>
+            
+            <div class="map-item">
+                <div class="map-thumbnail">
+                    <img src="map2.jpg" alt="Aquaculture Map">
+                </div>
+                <div class="map-details">
+                    <h3>Aquaculture Potential Sites in Kenya (2022)</h3>
+                    <div class="map-meta">
+                        <span><strong>Scale:</strong> 1:100,000</span> | 
+                        <span><strong>Projection:</strong> UTM Zone 37S</span> | 
+                        <span><strong>Date:</strong> November 2022</span>
+                    </div>
+                    <p>Identifies areas with high potential for fish farming based on water availability, soil suitability, and market access. Includes both marine and freshwater sites.</p>
+                    <a href="#" class="btn">View Full Map</a>
+                    <a href="#" class="btn btn-outline">Download</a>
+                    <a href="#" class="btn btn-outline">Metadata</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn">View All Maps</button>
+            </div>
+        </main>
+    </div>
+
+
+</body>
+</html>

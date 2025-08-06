@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marine Research | KMFRI</title>
+    <style>
+        :root {
+            --deep-blue: #005b96;
+            --light-teal: #00b4d8;
+            --seafoam: #90e0ef;
+            --sand: #f8f3e6;
+            --coral: #ff6b6b;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: var(--sand);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 91, 150, 0.8), rgba(0, 91, 150, 0.8)), url('images/marine-research-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding:  20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .research-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 40px 0;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .tab-btn.active {
+            background: var(--deep-blue);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .research-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .research-highlight {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+            align-items: center;
+        }
+        
+        .research-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .research-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: var(--seafoam);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--deep-blue);
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Marine Research</h1>
+        <p>Advancing scientific knowledge for sustainable management of Kenya's marine ecosystems</p>
+    </section>
+    
+    <main class="container">
+        <div class="research-tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="programs">Research Programs</button>
+            <button class="tab-btn" data-tab="facilities">Facilities</button>
+            <button class="tab-btn" data-tab="publications">Publications</button>
+        </div>
+        
+        <section id="overview" class="tab-content active">
+            <div class="research-card">
+                <h2 style="color: var(--deep-blue);">About Our Marine Research</h2>
+                <p>KMFRI conducts cutting-edge marine research along Kenya's 600km coastline and territorial waters, focusing on ecosystem health, sustainable fisheries, and blue economy development. Our work supports national policies and international commitments for ocean conservation.</p>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">40+</div>
+                        <div>Years of Marine Research</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <div>Coastal Research Stations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">200+</div>
+                        <div>Marine Species Discovered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div>Research Vessels</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="research-highlight">
+                <div class="research-img">
+                    <img src="images/coral-research.jpg" alt="Coral Reef Research">
+                </div>
+                <div>
+                    <h3 style="color: var(--deep-blue);">Coral Reef Conservation</h3>
+                    <p>Our scientists are pioneering coral restoration techniques to rehabilitate degraded reefs along the Kenyan coast. Research focuses on:</p>
+                    <ul>
+                        <li>Coral bleaching resilience</li>
+                        <li>Nursery propagation techniques</li>
+                        <li>Community-based reef management</li>
+                        <li>Ecological monitoring protocols</li>
+                    </ul>
+                    <a href="research/coral-reefs.html" style="display: inline-block; background: var(--deep-blue); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-top: 15px;">Learn More</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="programs" class="tab-content">
+            <div class="research-card">
+                <h2 style="color: var(--deep-blue);">Marine Research Programs</h2>
+                
+                <div class="program">
+                    <h3>Marine Biodiversity</h3>
+                    <p>Documenting and conserving Kenya's rich marine life through species inventories, habitat mapping, and protected area research.</p>
+                </div>
+                
+                <div class="program">
+                    <h3>Fisheries Science</h3>
+                    <p>Stock assessments, ecosystem-based fisheries management, and sustainable harvesting practices for marine resources.</p>
+                </div>
+                
+                <div class="program">
+                    <h3>Coastal Zone Management</h3>
+                    <p>Integrated approaches to coastal development balancing conservation needs with human activities.</p>
+                </div>
+                
+                <div class="program">
+                    <h3>Marine Pollution</h3>
+                    <p>Monitoring and mitigation of marine debris, oil spills, and land-based pollution sources.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="facilities" class="tab-content">
+            <div class="research-card">
+                <h2 style="color: var(--deep-blue);">Marine Research Facilities</h2>
+                <p>KMFRI maintains specialized facilities to support marine research:</p>
+                
+                <div class="facility">
+                    <h3>Marine Research Stations</h3>
+                    <p>Network of 12 coastal stations from Lamu to Shimoni for field studies and monitoring.</p>
+                </div>
+                
+                <div class="facility">
+                    <h3>Research Vessels</h3>
+                    <p>Fleet of vessels ranging from inshore boats to offshore research ships.</p>
+                </div>
+                
+                <div class="facility">
+                    <h3>Marine Laboratories</h3>
+                    <p>Specialized labs for water chemistry, microbiology, and marine specimen analysis.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="publications" class="tab-content">
+            <div class="research-card">
+                <h2 style="color: var(--deep-blue);">Marine Research Publications</h2>
+                <p>Access our latest marine research findings and technical reports:</p>
+                
+                <div class="publication">
+                    <h3>Annual Marine Ecosystem Status Report</h3>
+                    <p>Comprehensive assessment of Kenya's marine environment</p>
+                    <a href="#" style="color: var(--light-teal);">Download PDF</a>
+                </div>
+                
+                <div class="publication">
+                    <h3>Journal of Marine Science in Africa</h3>
+                    <p>Peer-reviewed research articles by KMFRI scientists</p>
+                    <a href="#" style="color: var(--light-teal);">Browse Articles</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide all content
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show selected content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

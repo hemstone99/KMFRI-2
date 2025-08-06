@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacancies | KMFRI Careers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <style>
+        :root {
+            --kmfri-blue: #0066cc;
+            --kmfri-green: #009933;
+            --kmfri-dark-blue: #004080;
+            --light-bg: #f5f9ff;
+            --dark-text: #2d3748;
+            --light-text: #718096;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --open-vacancy: #10b981;
+            --closed-vacancy: #ef4444;
+            --contract-vacancy: #f59e0b;
+            --internship-vacancy: #8b5cf6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.5;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+        
+        .main-content {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px 0 0 0;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .page-header {
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+            color: var(--kmfri-blue);
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .page-header p {
+            color: var(--light-text);
+            margin: 0;
+            font-size: 1rem;
+            max-width: 800px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--light-text);
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .tab.active {
+            color: var(--kmfri-blue);
+            border-bottom-color: var(--kmfri-blue);
+        }
+        
+        .tab:hover:not(.active) {
+            color: var(--kmfri-dark-blue);
+            border-bottom-color: #e2e8f0;
+        }
+        
+        .search-filter-container {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .search-filter-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            background-color: white;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--kmfri-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text);
+        }
+        
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            color: var(--dark-text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--kmfri-blue);
+            color: var(--kmfri-blue);
+        }
+        
+        .vacancy-table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+        
+        .vacancy-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .vacancy-table th {
+            background-color: var(--kmfri-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .vacancy-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f4f8;
+            vertical-align: middle;
+        }
+        
+        .vacancy-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .vacancy-table tr:hover td {
+            background-color: #f8fafc;
+        }
+        
+        .vacancy-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .type-open {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--open-vacancy);
+        }
+        
+        .type-closed {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--closed-vacancy);
+        }
+        
+        .type-contract {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--contract-vacancy);
+        }
+        
+        .type-internship {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: var(--internship-vacancy);
+        }
+        
+        .apply-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background-color: rgba(0, 102, 204, 0.1);
+            color: var(--kmfri-blue);
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .apply-btn:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+        }
+        
+        .disabled-btn {
+            background-color: #e2e8f0;
+            color: #718096;
+            cursor: not-allowed;
+        }
+        
+        .vacancy-date-group {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--kmfri-blue);
+            font-weight: 600;
+            color: var(--kmfri-blue);
+        }
+        
+        .no-vacancies {
+            padding: 2rem;
+            text-align: center;
+            color: var(--light-text);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .page-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            color: var(--dark-text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .page-btn.active {
+            background-color: var(--kmfri-blue);
+            color: white;
+            border-color: var(--kmfri-blue);
+        }
+        
+        .page-btn:hover:not(.active) {
+            border-color: var(--kmfri-blue);
+            color: var(--kmfri-blue);
+        }
+        
+        .sidebar {
+            background-color: white;
+            padding: 1.5rem;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-title {
+            font-size: 1rem;
+            color: var(--kmfri-blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--kmfri-green);
+        }
+        
+        .sidebar-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--dark-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .sidebar-link:hover {
+            color: var(--kmfri-blue);
+        }
+        
+        .sidebar-link i {
+            width: 1.25rem;
+            text-align: center;
+            margin-right: 0.5rem;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--kmfri-blue);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--kmfri-blue);
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                border-radius: 0;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .vacancy-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 0.5rem;
+            }
+            
+            .stats-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Careers</h3>
+                <a href="#" class="sidebar-link"><i class="fas fa-home"></i> Careers Home</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-user-tie"></i> Vacancies</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-graduation-cap"></i> Internships</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-book"></i> Recruitment Policy</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-question-circle"></i> FAQs</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Filter Vacancies</h3>
+                <a href="#" class="sidebar-link" data-tab="all"><i class="fas fa-circle" style="color: var(--kmfri-blue);"></i> All Vacancies</a>
+                <a href="#" class="sidebar-link" data-tab="open"><i class="fas fa-circle" style="color: var(--open-vacancy);"></i> Open Vacancies</a>
+                <a href="#" class="sidebar-link" data-tab="closed"><i class="fas fa-circle" style="color: var(--closed-vacancy);"></i> Closed Vacancies</a>
+                <a href="#" class="sidebar-link" data-tab="contract"><i class="fas fa-circle" style="color: var(--contract-vacancy);"></i> Contract Positions</a>
+                <a href="#" class="sidebar-link" data-tab="internship"><i class="fas fa-circle" style="color: var(--internship-vacancy);"></i> Internships</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Resources</h3>
+                <a href="#" class="sidebar-link"><i class="fas fa-download"></i> Application Forms</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-file-pdf"></i> Recruitment Policy</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-video"></i> Application Guide</a>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-user-tie"></i> KMFRI Vacancies</h1>
+                <p>Current career opportunities at the Kenya Marine and Fisheries Research Institute. Join our team of marine science professionals and researchers.</p>
+            </div>
+            
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Current Openings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Research Positions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Internship Slots</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Contract Positions</div>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="all">All Vacancies</div>
+                <div class="tab" data-tab="open">Open Vacancies</div>
+                <div class="tab" data-tab="closed">Closed Vacancies</div>
+                <div class="tab" data-tab="contract">Contract Positions</div>
+                <div class="tab" data-tab="internship">Internships</div>
+            </div>
+            
+            <div class="search-filter-container">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search vacancies by title, department or reference...">
+                </div>
+                <button class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    Filters
+                </button>
+            </div>
+            
+            <!-- All Vacancies Tab -->
+            <div id="all-vacancies" class="tab-content active">
+                <div class="vacancy-table-container">
+                    <table class="vacancy-table">
+                        <thead>
+                            <tr>
+                                <th>Ref No.</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Type</th>
+                                <th>Closing Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">June 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/023</td>
+                                <td>Senior Marine Researcher</td>
+                                <td>Marine Biodiversity</td>
+                                <td><span class="vacancy-type type-open"><i class="fas fa-lock-open"></i> Open</span></td>
+                                <td>30 Jun 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/HR/023" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/024</td>
+                                <td>Aquaculture Technician</td>
+                                <td>Aquaculture</td>
+                                <td><span class="vacancy-type type-open"><i class="fas fa-lock-open"></i> Open</span></td>
+                                <td>28 Jun 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/HR/024" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">May 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/021</td>
+                                <td>IT Support Officer</td>
+                                <td>ICT</td>
+                                <td><span class="vacancy-type type-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>15 May 2023</td>
+                                <td>
+                                    <span class="apply-btn disabled-btn">
+                                        <i class="fas fa-clock"></i> Closed
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/022</td>
+                                <td>Laboratory Manager</td>
+                                <td>Research</td>
+                                <td><span class="vacancy-type type-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>10 May 2023</td>
+                                <td>
+                                    <span class="apply-btn disabled-btn">
+                                        <i class="fas fa-clock"></i> Closed
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">April 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/019</td>
+                                <td>Field Research Assistant (Contract)</td>
+                                <td>Field Operations</td>
+                                <td><span class="vacancy-type type-contract"><i class="fas fa-file-contract"></i> Contract</span></td>
+                                <td>28 Apr 2023</td>
+                                <td>
+                                    <span class="apply-btn disabled-btn">
+                                        <i class="fas fa-clock"></i> Closed
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">July 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/INT/005</td>
+                                <td>Marine Science Intern</td>
+                                <td>Training</td>
+                                <td><span class="vacancy-type type-internship"><i class="fas fa-user-graduate"></i> Internship</span></td>
+                                <td>15 Jul 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/INT/005" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Open Vacancies Tab -->
+            <div id="open-vacancies" class="tab-content">
+                <div class="vacancy-table-container">
+                    <table class="vacancy-table">
+                        <thead>
+                            <tr>
+                                <th>Ref No.</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Type</th>
+                                <th>Closing Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">June 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/023</td>
+                                <td>Senior Marine Researcher</td>
+                                <td>Marine Biodiversity</td>
+                                <td><span class="vacancy-type type-open"><i class="fas fa-lock-open"></i> Open</span></td>
+                                <td>30 Jun 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/HR/023" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/024</td>
+                                <td>Aquaculture Technician</td>
+                                <td>Aquaculture</td>
+                                <td><span class="vacancy-type type-open"><i class="fas fa-lock-open"></i> Open</span></td>
+                                <td>28 Jun 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/HR/024" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">July 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/INT/005</td>
+                                <td>Marine Science Intern</td>
+                                <td>Training</td>
+                                <td><span class="vacancy-type type-internship"><i class="fas fa-user-graduate"></i> Internship</span></td>
+                                <td>15 Jul 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/INT/005" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Closed Vacancies Tab -->
+            <div id="closed-vacancies" class="tab-content">
+                <div class="vacancy-table-container">
+                    <table class="vacancy-table">
+                        <thead>
+                            <tr>
+                                <th>Ref No.</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Type</th>
+                                <th>Closed Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">May 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/021</td>
+                                <td>IT Support Officer</td>
+                                <td>ICT</td>
+                                <td><span class="vacancy-type type-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>15 May 2023</td>
+                                <td>Shortlisting</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/022</td>
+                                <td>Laboratory Manager</td>
+                                <td>Research</td>
+                                <td><span class="vacancy-type type-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>10 May 2023</td>
+                                <td>Interviews</td>
+                            </tr>
+                            
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">April 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/019</td>
+                                <td>Field Research Assistant (Contract)</td>
+                                <td>Field Operations</td>
+                                <td><span class="vacancy-type type-contract"><i class="fas fa-file-contract"></i> Contract</span></td>
+                                <td>28 Apr 2023</td>
+                                <td>Filled</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/020</td>
+                                <td>Procurement Officer</td>
+                                <td>Finance</td>
+                                <td><span class="vacancy-type type-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>15 Apr 2023</td>
+                                <td>Filled</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Contract Positions Tab -->
+            <div id="contract-vacancies" class="tab-content">
+                <div class="vacancy-table-container">
+                    <table class="vacancy-table">
+                        <thead>
+                            <tr>
+                                <th>Ref No.</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Duration</th>
+                                <th>Closing Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">Current Contract Positions</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/CNT/008</td>
+                                <td>Marine Data Analyst</td>
+                                <td>Research</td>
+                                <td>6 Months</td>
+                                <td>05 Jul 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/CNT/008" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">Past Contract Positions</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/HR/019</td>
+                                <td>Field Research Assistant</td>
+                                <td>Field Operations</td>
+                                <td>1 Year</td>
+                                <td>28 Apr 2023</td>
+                                <td>
+                                    <span class="apply-btn disabled-btn">
+                                        <i class="fas fa-clock"></i> Closed
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/CNT/007</td>
+                                <td>GIS Specialist</td>
+                                <td>Marine Spatial Planning</td>
+                                <td>8 Months</td>
+                                <td>10 Mar 2023</td>
+                                <td>
+                                    <span class="apply-btn disabled-btn">
+                                        <i class="fas fa-clock"></i> Closed
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Internships Tab -->
+            <div id="internship-vacancies" class="tab-content">
+                <div class="vacancy-table-container">
+                    <table class="vacancy-table">
+                        <thead>
+                            <tr>
+                                <th>Ref No.</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Duration</th>
+                                <th>Closing Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">Current Internship Opportunities</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/INT/005</td>
+                                <td>Marine Science Intern</td>
+                                <td>Training</td>
+                                <td>6 Months</td>
+                                <td>15 Jul 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/INT/005" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/INT/006</td>
+                                <td>Aquaculture Intern</td>
+                                <td>Aquaculture</td>
+                                <td>3 Months</td>
+                                <td>20 Jul 2023</td>
+                                <td>
+                                    <a href="vacancies/apply.html?ref=KMFRI/INT/006" class="apply-btn">
+                                        <i class="fas fa-paper-plane"></i> Apply Now
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="vacancy-date-group">
+                                <td colspan="6">Past Internship Programs</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/INT/004</td>
+                                <td>Marine Conservation Intern</td>
+                                <td>Conservation</td>
+                                <td>6 Months</td>
+                                <td>15 Jan 2023</td>
+                                <td>
+                                    <span class="apply-btn disabled-btn">
+                                        <i class="fas fa-clock"></i> Closed
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; background-color: #f8fafc; padding: 1.5rem; border-radius: 8px;">
+                <h3 style="margin-top: 0; color: var(--kmfri-blue);"><i class="fas fa-info-circle"></i> Application Guidelines</h3>
+                <ul style="padding-left: 1.5rem; color: var(--light-text); line-height: 1.6;">
+                    <li>All applications must include a cover letter, CV, and copies of academic certificates</li>
+                    <li>Applications must be received by the specified closing date and time</li>
+                    <li>Late applications will not be accepted</li>
+                    <li>Only shortlisted candidates will be contacted</li>
+                    <li>Electronic submissions should be sent to recruitment@kmfri.go.ke with the reference number as the subject</li>
+                    <li>For inquiries, contact the HR Office at +254 20 1234567</li>
+                </ul>
+                
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#" class="apply-btn" style="background-color: var(--kmfri-green); color: white;">
+                        <i class="fas fa-download"></i> Download Application Form
+                    </a>
+                    <a href="#" class="apply-btn">
+                        <i class="fas fa-book"></i> View Recruitment Policy
+                    </a>
+                    <a href="#" class="apply-btn">
+                        <i class="fas fa-question-circle"></i> Application FAQs
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize all tables
+            $('.vacancy-table').DataTable({
+                ordering: true,
+                paging: false,
+                info: false,
+                searching: false,
+                columnDefs: [
+                    { orderable: false, targets: [5] } // Disable sorting for Action column
+                ],
+                initComplete: function() {
+                    // Move the date group rows to the correct position after sorting
+                    $('.vacancy-date-group').each(function() {
+                        $(this).insertBefore($(this).nextUntil('.vacancy-date-group').last().next());
+                    });
+                }
+            });
+            
+            // Tab switching functionality
+            $('.tab').click(function() {
+                const tabId = $(this).data('tab');
+                $('.tab').removeClass('active');
+                $(this).addClass('active');
+                $('.tab-content').removeClass('active');
+                $(`#${tabId}-vacancies`).addClass('active');
+            });
+            
+            // Sidebar link tab switching
+            $('.sidebar-link[data-tab]').click(function(e) {
+                e.preventDefault();
+                const tabId = $(this).data('tab');
+                $('.tab').removeClass('active');
+                $(`.tab[data-tab="${tabId}"]`).addClass('active');
+                $('.tab-content').removeClass('active');
+                $(`#${tabId}-vacancies`).addClass('active');
+            });
+            
+            // Simulate application tracking
+            $('.apply-btn:not(.disabled-btn)').click(function(e) {
+                console.log('Applying for: ' + $(this).attr('href'));
+                // In a real implementation, this would track applications
+            });
+        });
+    </script>
+</body>
+</html>

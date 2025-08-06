@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenders | KMFRI Procurement</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <style>
+        :root {
+            --kmfri-blue: #0066cc;
+            --kmfri-green: #009933;
+            --kmfri-dark-blue: #004080;
+            --light-bg: #f5f9ff;
+            --dark-text: #2d3748;
+            --light-text: #718096;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --open-tender: #10b981;
+            --closed-tender: #ef4444;
+            --upcoming-tender: #f59e0b;
+            --awarded-tender: #8b5cf6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.5;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+        
+        .main-content {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px 0 0 0;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .page-header {
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+            color: var(--kmfri-blue);
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .page-header p {
+            color: var(--light-text);
+            margin: 0;
+            font-size: 1rem;
+            max-width: 800px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--light-text);
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .tab.active {
+            color: var(--kmfri-blue);
+            border-bottom-color: var(--kmfri-blue);
+        }
+        
+        .tab:hover:not(.active) {
+            color: var(--kmfri-dark-blue);
+            border-bottom-color: #e2e8f0;
+        }
+        
+        .search-filter-container {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .search-filter-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            background-color: white;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--kmfri-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text);
+        }
+        
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            color: var(--dark-text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--kmfri-blue);
+            color: var(--kmfri-blue);
+        }
+        
+        .tender-table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+        
+        .tender-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .tender-table th {
+            background-color: var(--kmfri-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .tender-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f4f8;
+            vertical-align: middle;
+        }
+        
+        .tender-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .tender-table tr:hover td {
+            background-color: #f8fafc;
+        }
+        
+        .tender-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-open {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--open-tender);
+        }
+        
+        .status-closed {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--closed-tender);
+        }
+        
+        .status-upcoming {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--upcoming-tender);
+        }
+        
+        .status-awarded {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: var(--awarded-tender);
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background-color: rgba(0, 102, 204, 0.1);
+            color: var(--kmfri-blue);
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .download-btn:hover {
+            background-color: rgba(0, 102, 204, 0.2);
+        }
+        
+        .tender-date-group {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--kmfri-blue);
+            font-weight: 600;
+            color: var(--kmfri-blue);
+        }
+        
+        .no-tenders {
+            padding: 2rem;
+            text-align: center;
+            color: var(--light-text);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .page-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            color: var(--dark-text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .page-btn.active {
+            background-color: var(--kmfri-blue);
+            color: white;
+            border-color: var(--kmfri-blue);
+        }
+        
+        .page-btn:hover:not(.active) {
+            border-color: var(--kmfri-blue);
+            color: var(--kmfri-blue);
+        }
+        
+        .sidebar {
+            background-color: white;
+            padding: 1.5rem;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-title {
+            font-size: 1rem;
+            color: var(--kmfri-blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--kmfri-green);
+        }
+        
+        .sidebar-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--dark-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .sidebar-link:hover {
+            color: var(--kmfri-blue);
+        }
+        
+        .sidebar-link i {
+            width: 1.25rem;
+            text-align: center;
+            margin-right: 0.5rem;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                border-radius: 0;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .tender-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Procurement</h3>
+                <a href="#" class="sidebar-link"><i class="fas fa-home"></i> Procurement Home</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-file-alt"></i> Tenders</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-shopping-cart"></i> Supplier Registration</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-book"></i> Procurement Policy</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-question-circle"></i> FAQs</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Filter Tenders</h3>
+                <a href="#" class="sidebar-link" data-tab="open"><i class="fas fa-circle" style="color: var(--open-tender);"></i> Open Tenders</a>
+                <a href="#" class="sidebar-link" data-tab="upcoming"><i class="fas fa-circle" style="color: var(--upcoming-tender);"></i> Upcoming Tenders</a>
+                <a href="#" class="sidebar-link" data-tab="closed"><i class="fas fa-circle" style="color: var(--closed-tender);"></i> Closed Tenders</a>
+                <a href="#" class="sidebar-link" data-tab="awarded"><i class="fas fa-circle" style="color: var(--awarded-tender);"></i> Awarded Tenders</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-filter"></i> By Category</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-calendar"></i> By Date</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Resources</h3>
+                <a href="#" class="sidebar-link"><i class="fas fa-download"></i> Tender Documents</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-file-pdf"></i> Procurement Manual</a>
+                <a href="#" class="sidebar-link"><i class="fas fa-video"></i> Bidding Tutorials</a>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-file-contract"></i> KMFRI Tenders</h1>
+                <p>Current procurement opportunities at the Kenya Marine and Fisheries Research Institute. Download tender documents and submit your bids before the closing dates.</p>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="all">All Tenders</div>
+                <div class="tab" data-tab="open">Open Tenders</div>
+                <div class="tab" data-tab="upcoming">Upcoming Tenders</div>
+                <div class="tab" data-tab="closed">Closed Tenders</div>
+                <div class="tab" data-tab="awarded">Awarded Tenders</div>
+            </div>
+            
+            <div class="search-filter-container">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search tenders by reference, title or category...">
+                </div>
+                <button class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    Filters
+                </button>
+            </div>
+            
+            <!-- All Tenders Tab -->
+            <div id="all-tenders" class="tab-content active">
+                <div class="tender-table-container">
+                    <table class="tender-table">
+                        <thead>
+                            <tr>
+                                <th>Tender No.</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Closing Date</th>
+                                <th>Documents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tender-date-group">
+                                <td colspan="6">June 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/001</td>
+                                <td>Supply of Marine Research Equipment</td>
+                                <td>Goods</td>
+                                <td><span class="tender-status status-open"><i class="fas fa-lock-open"></i> Open</span></td>
+                                <td>30 Jun 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-001.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/002</td>
+                                <td>Construction of Marine Laboratory in Mombasa</td>
+                                <td>Works</td>
+                                <td><span class="tender-status status-open"><i class="fas fa-lock-open"></i> Open</span></td>
+                                <td>28 Jun 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-002.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="tender-date-group">
+                                <td colspan="6">May 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/003</td>
+                                <td>Provision of Cleaning Services for KMFRI Facilities</td>
+                                <td>Services</td>
+                                <td><span class="tender-status status-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>15 May 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-003.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/004</td>
+                                <td>Supply of IT Equipment and Software</td>
+                                <td>Goods</td>
+                                <td><span class="tender-status status-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>10 May 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-004.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="tender-date-group">
+                                <td colspan="6">April 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/005</td>
+                                <td>Research Vessel Maintenance Services</td>
+                                <td>Services</td>
+                                <td><span class="tender-status status-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>28 Apr 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-005.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="tender-date-group">
+                                <td colspan="6">July 2023 (Upcoming)</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/006</td>
+                                <td>Marine Biodiversity Survey in Lamu Archipelago</td>
+                                <td>Consultancy</td>
+                                <td><span class="tender-status status-upcoming"><i class="fas fa-clock"></i> Upcoming</span></td>
+                                <td>15 Jul 2023</td>
+                                <td>
+                                    <span class="download-btn" style="background-color: #e2e8f0; color: #718096; cursor: not-allowed;">
+                                        <i class="fas fa-clock"></i> Available Soon
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Open Tenders Tab -->
+            <div id="open-tenders" class="tab-content">
+                <div class="tender-table-container">
+                    <table class="tender-table">
+                        <thead>
+                            <tr>
+                                <th>Tender No.</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Closing Date</th>
+                                <th>Documents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tender-date-group">
+                                <td colspan="6">June 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/001</td>
+                                <td>Supply of Marine Research Equipment</td>
+                                <td>Goods</td>
+                                <td><span class="tender-status status-open"><i class="fas fa-lock-open"></i> Open</span></td>
+                                <td>30 Jun 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-001.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/002</td>
+                                <td>Construction of Marine Laboratory in Mombasa</td>
+                                <td>Works</td>
+                                <td><span class="tender-status status-open"><i class="fas fa-lock-open"></i> Open</span></td>
+                                <td>28 Jun 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-002.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Upcoming Tenders Tab -->
+            <div id="upcoming-tenders" class="tab-content">
+                <div class="tender-table-container">
+                    <table class="tender-table">
+                        <thead>
+                            <tr>
+                                <th>Tender No.</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Opening Date</th>
+                                <th>Documents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tender-date-group">
+                                <td colspan="6">July 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/006</td>
+                                <td>Marine Biodiversity Survey in Lamu Archipelago</td>
+                                <td>Consultancy</td>
+                                <td><span class="tender-status status-upcoming"><i class="fas fa-clock"></i> Upcoming</span></td>
+                                <td>15 Jul 2023</td>
+                                <td>
+                                    <span class="download-btn" style="background-color: #e2e8f0; color: #718096; cursor: not-allowed;">
+                                        <i class="fas fa-clock"></i> Available Soon
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/007</td>
+                                <td>Supply of Oceanographic Monitoring Buoys</td>
+                                <td>Goods</td>
+                                <td><span class="tender-status status-upcoming"><i class="fas fa-clock"></i> Upcoming</span></td>
+                                <td>20 Jul 2023</td>
+                                <td>
+                                    <span class="download-btn" style="background-color: #e2e8f0; color: #718096; cursor: not-allowed;">
+                                        <i class="fas fa-clock"></i> Available Soon
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                            <tr class="tender-date-group">
+                                <td colspan="6">August 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/008</td>
+                                <td>Renovation of Mombasa Research Center</td>
+                                <td>Works</td>
+                                <td><span class="tender-status status-upcoming"><i class="fas fa-clock"></i> Upcoming</span></td>
+                                <td>05 Aug 2023</td>
+                                <td>
+                                    <span class="download-btn" style="background-color: #e2e8f0; color: #718096; cursor: not-allowed;">
+                                        <i class="fas fa-clock"></i> Available Soon
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Closed Tenders Tab -->
+            <div id="closed-tenders" class="tab-content">
+                <div class="tender-table-container">
+                    <table class="tender-table">
+                        <thead>
+                            <tr>
+                                <th>Tender No.</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Closed Date</th>
+                                <th>Documents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tender-date-group">
+                                <td colspan="6">May 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/003</td>
+                                <td>Provision of Cleaning Services for KMFRI Facilities</td>
+                                <td>Services</td>
+                                <td><span class="tender-status status-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>15 May 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-003.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/004</td>
+                                <td>Supply of IT Equipment and Software</td>
+                                <td>Goods</td>
+                                <td><span class="tender-status status-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>10 May 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-004.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="tender-date-group">
+                                <td colspan="6">April 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/005</td>
+                                <td>Research Vessel Maintenance Services</td>
+                                <td>Services</td>
+                                <td><span class="tender-status status-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>28 Apr 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-005.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="tender-date-group">
+                                <td colspan="6">March 2023</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2023/009</td>
+                                <td>Supply of Laboratory Chemicals</td>
+                                <td>Goods</td>
+                                <td><span class="tender-status status-closed"><i class="fas fa-lock"></i> Closed</span></td>
+                                <td>15 Mar 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2023-009.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Awarded Tenders Tab -->
+            <div id="awarded-tenders" class="tab-content">
+                <div class="tender-table-container">
+                    <table class="tender-table">
+                        <thead>
+                            <tr>
+                                <th>Tender No.</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Awarded To</th>
+                                <th>Award Date</th>
+                                <th>Documents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tender-date-group">
+                                <td colspan="6">2023 Awards</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2022/015</td>
+                                <td>Fisheries Data Collection System</td>
+                                <td>Services</td>
+                                <td>AquaTech Solutions Ltd</td>
+                                <td>10 Jan 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2022-015-award.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Award Notice
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2022/018</td>
+                                <td>Supply of Field Equipment</td>
+                                <td>Goods</td>
+                                <td>Marine Gear Africa</td>
+                                <td>25 Jan 2023</td>
+                                <td>
+                                    <a href="tenders/kmfri-2022-018-award.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Award Notice
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="tender-date-group">
+                                <td colspan="6">2022 Awards</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2022/010</td>
+                                <td>Coastal Research Vessel Charter</td>
+                                <td>Services</td>
+                                <td>Blue Ocean Charters</td>
+                                <td>15 Nov 2022</td>
+                                <td>
+                                    <a href="tenders/kmfri-2022-010-award.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Award Notice
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>KMFRI/2022/007</td>
+                                <td>Laboratory Renovation Works</td>
+                                <td>Works</td>
+                                <td>Coast Builders Ltd</td>
+                                <td>05 Oct 2022</td>
+                                <td>
+                                    <a href="tenders/kmfri-2022-007-award.pdf" class="download-btn" download>
+                                        <i class="fas fa-download"></i> Award Notice
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; background-color: #f8fafc; padding: 1.5rem; border-radius: 8px;">
+                <h3 style="margin-top: 0; color: var(--kmfri-blue);"><i class="fas fa-info-circle"></i> Tender Submission Guidelines</h3>
+                <ul style="padding-left: 1.5rem; color: var(--light-text); line-height: 1.6;">
+                    <li>All bids must be submitted in sealed envelopes marked with the tender number</li>
+                    <li>Bids must be received by the specified closing date and time</li>
+                    <li>Late bids will not be accepted under any circumstances</li>
+                    <li>Bidders must provide all required documents as specified in the tender notice</li>
+                    <li>Electronic submissions should be sent to procurement@kmfri.go.ke with the tender number as the subject</li>
+                    <li>For inquiries, contact the Procurement Office at +254 20 1234567</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize all tables
+            $('.tender-table').DataTable({
+                ordering: true,
+                paging: false,
+                info: false,
+                searching: false,
+                columnDefs: [
+                    { orderable: false, targets: [5] } // Disable sorting for Documents column
+                ],
+                initComplete: function() {
+                    // Move the date group rows to the correct position after sorting
+                    $('.tender-date-group').each(function() {
+                        $(this).insertBefore($(this).nextUntil('.tender-date-group').last().next());
+                    });
+                }
+            });
+            
+            // Tab switching functionality
+            $('.tab').click(function() {
+                const tabId = $(this).data('tab');
+                $('.tab').removeClass('active');
+                $(this).addClass('active');
+                $('.tab-content').removeClass('active');
+                $(`#${tabId}-tenders`).addClass('active');
+            });
+            
+            // Sidebar link tab switching
+            $('.sidebar-link[data-tab]').click(function(e) {
+                e.preventDefault();
+                const tabId = $(this).data('tab');
+                $('.tab').removeClass('active');
+                $(`.tab[data-tab="${tabId}"]`).addClass('active');
+                $('.tab-content').removeClass('active');
+                $(`#${tabId}-tenders`).addClass('active');
+            });
+            
+            // Simulate document download tracking
+            $('.download-btn').click(function(e) {
+                if(!$(this).hasClass('disabled')) {
+                    console.log('Downloading: ' + $(this).attr('href'));
+                    // In a real implementation, this would track downloads
+                } else {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

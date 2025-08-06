@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tide Predictions | KMFRI Marine Research</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        :root {
+            --kmfri-blue: #0066cc;
+            --kmfri-green: #009933;
+            --kmfri-dark-blue: #004080;
+            --light-bg: #f5f9ff;
+            --dark-text: #2d3748;
+            --light-text: #718096;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --high-tide: #4a6bff;
+            --low-tide: #10b981;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.5;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+        
+        .main-content {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px 0 0 0;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .page-header {
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+            color: var(--kmfri-blue);
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .page-header p {
+            color: var(--light-text);
+            margin: 0;
+            font-size: 1rem;
+            max-width: 800px;
+        }
+        
+        .control-panel {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .control-group {
+            margin-bottom: 0;
+        }
+        
+        .control-label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+        
+        .control-select, .control-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background-color: white;
+            transition: all 0.2s;
+        }
+        
+        .control-select:focus, .control-input:focus {
+            outline: none;
+            border-color: var(--kmfri-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+        }
+        
+        .btn {
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background-color: var(--kmfri-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--kmfri-dark-blue);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background: white;
+            border: 1px solid #e2e8f0;
+            color: var(--dark-text);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--kmfri-blue);
+            color: var(--kmfri-blue);
+        }
+        
+        .tide-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .summary-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .summary-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .summary-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        .high-tide {
+            color: var(--high-tide);
+        }
+        
+        .low-tide {
+            color: var(--low-tide);
+        }
+        
+        .summary-label {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .tide-chart-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            height: 400px;
+        }
+        
+        #tideChart {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .tide-table-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow-x: auto;
+        }
+        
+        .tide-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .tide-table th {
+            background-color: var(--kmfri-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .tide-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f4f8;
+        }
+        
+        .tide-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .tide-table tr:hover td {
+            background-color: #f8fafc;
+        }
+        
+        .tide-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .tide-high {
+            background-color: rgba(74, 107, 255, 0.1);
+            color: var(--high-tide);
+        }
+        
+        .tide-low {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--low-tide);
+        }
+        
+        .tide-info {
+            margin-top: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .tide-info h3 {
+            color: var(--kmfri-blue);
+            margin-top: 0;
+        }
+        
+        .tide-info p {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+        
+        .download-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                border-radius: 0;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .control-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tide-summary {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar would be included here -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-water"></i> Tide Predictions</h1>
+                <p>Accurate tide predictions for Kenyan coastal waters based on KMFRI's hydrodynamic models and historical data. Predictions are calculated for mean sea level and may vary with weather conditions.</p>
+            </div>
+            
+            <div class="control-panel">
+                <div class="control-grid">
+                    <div class="control-group">
+                        <label class="control-label">Location</label>
+                        <select class="control-select" id="locationSelect">
+                            <option value="mombasa">Mombasa (Kilindini Harbour)</option>
+                            <option value="lamu">Lamu Archipelago</option>
+                            <option value="malindi">Malindi</option>
+                            <option value="diani">Diani Beach</option>
+                            <option value="watamu">Watamu Marine Park</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Date Range</label>
+                        <input type="text" class="control-input" id="dateRangePicker" placeholder="Select date range">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Time Zone</label>
+                        <select class="control-select" id="timezoneSelect">
+                            <option value="EAT">East Africa Time (EAT)</option>
+                            <option value="UTC">UTC</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group" style="display: flex; align-items: flex-end;">
+                        <button class="btn btn-primary" id="updateBtn">
+                            <i class="fas fa-sync-alt"></i> Update Predictions
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tide-summary">
+                <div class="summary-card">
+                    <div class="summary-value high-tide">3.2m</div>
+                    <div class="summary-label">Next High Tide</div>
+                    <div class="summary-time">Today, 08:42 AM</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-value low-tide">0.8m</div>
+                    <div class="summary-label">Next Low Tide</div>
+                    <div class="summary-time">Today, 02:18 PM</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-value">2.4m</div>
+                    <div class="summary-label">Tidal Range</div>
+                    <div class="summary-time">Today's variation</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-value">12:36</div>
+                    <div class="summary-label">Tide Interval</div>
+                    <div class="summary-time">Between high tides</div>
+                </div>
+            </div>
+            
+            <div class="tide-chart-container">
+                <canvas id="tideChart"></canvas>
+            </div>
+            
+            <div class="tide-table-container">
+                <h3 style="margin-top: 0; color: var(--kmfri-blue);">Tide Timetable</h3>
+                <table class="tide-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Type</th>
+                            <th>Height (m)</th>
+                            <th>Sun/Moon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Today</td>
+                            <td>08:42 AM</td>
+                            <td><span class="tide-type tide-high"><i class="fas fa-arrow-up"></i> High Tide</span></td>
+                            <td>3.2</td>
+                            <td><i class="fas fa-sun" style="color: #f59e0b;"></i> Sunrise: 06:15</td>
+                        </tr>
+                        <tr>
+                            <td>Today</td>
+                            <td>02:18 PM</td>
+                            <td><span class="tide-type tide-low"><i class="fas fa-arrow-down"></i> Low Tide</span></td>
+                            <td>0.8</td>
+                            <td><i class="fas fa-moon" style="color: #64748b;"></i> Moonrise: 09:42</td>
+                        </tr>
+                        <tr>
+                            <td>Today</td>
+                            <td>09:06 PM</td>
+                            <td><span class="tide-type tide-high"><i class="fas fa-arrow-up"></i> High Tide</span></td>
+                            <td>3.0</td>
+                            <td><i class="fas fa-sun" style="color: #ef4444;"></i> Sunset: 18:22</td>
+                        </tr>
+                        <tr>
+                            <td>Tomorrow</td>
+                            <td>03:12 AM</td>
+                            <td><span class="tide-type tide-low"><i class="fas fa-arrow-down"></i> Low Tide</span></td>
+                            <td>0.9</td>
+                            <td><i class="fas fa-moon" style="color: #64748b;"></i> Full Moon</td>
+                        </tr>
+                        <tr>
+                            <td>Tomorrow</td>
+                            <td>09:24 AM</td>
+                            <td><span class="tide-type tide-high"><i class="fas fa-arrow-up"></i> High Tide</span></td>
+                            <td>3.3</td>
+                            <td><i class="fas fa-sun" style="color: #f59e0b;"></i> Sunrise: 06:15</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tide-info">
+                <h3>Understanding Tide Predictions</h3>
+                <p>KMFRI's tide predictions are generated using advanced hydrodynamic models that incorporate lunar cycles, historical tide gauge data from our coastal monitoring network, and atmospheric pressure variations. These predictions are most accurate for standard meteorological conditions and may vary by up to 0.3m during periods of extreme weather (kaskazi/kusi monsoon seasons).</p>
+                
+                <p><strong>Important:</strong> Tide heights are referenced to Chart Datum (CD), which is approximately the lowest astronomical tide level. For safety-critical applications, always add a margin of error and consult real-time tide gauges when available.</p>
+                
+                <div class="download-options">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download PDF Report
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-file-csv"></i> Export as CSV
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-calendar-alt"></i> Subscribe to Updates
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize date range picker
+        flatpickr("#dateRangePicker", {
+            mode: "range",
+            defaultDate: [new Date(), new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)],
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
+        // Initialize tide chart
+        const ctx = document.getElementById('tideChart').getContext('2d');
+        const tideChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00'],
+                datasets: [{
+                    label: 'Tide Height (m)',
+                    data: [1.2, 2.1, 3.0, 2.5, 1.0, 0.8, 1.5, 2.8, 3.2],
+                    borderColor: var(--kmfri-blue),
+                    backgroundColor: 'rgba(0, 102, 204, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Height (m)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time (EAT)'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `Tide: ${context.parsed.y.toFixed(1)}m`;
+                            }
+                        }
+                    },
+                    annotation: {
+                        annotations: {
+                            high1: {
+                                type: 'line',
+                                yMin: 3.0,
+                                yMax: 3.0,
+                                borderColor: var(--high-tide),
+                                borderWidth: 1,
+                                borderDash: [6, 6],
+                                label: {
+                                    content: 'High Tide',
+                                    enabled: true,
+                                    position: 'left'
+                                }
+                            },
+                            low1: {
+                                type: 'line',
+                                yMin: 0.8,
+                                yMax: 0.8,
+                                borderColor: var(--low-tide),
+                                borderWidth: 1,
+                                borderDash: [6, 6],
+                                label: {
+                                    content: 'Low Tide',
+                                    enabled: true,
+                                    position: 'left'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Update button functionality
+        $('#updateBtn').click(function() {
+            // In a real implementation, this would fetch new data
+            const location = $('#locationSelect').val();
+            const dates = $('#dateRangePicker').val();
+            
+            // Show loading state
+            $(this).html('<i class="fas fa-spinner fa-spin"></i> Updating...');
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Update chart with new data
+                tideChart.data.labels = ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00'];
+                tideChart.data.datasets[0].data = [1.4, 2.3, 3.2, 2.7, 1.2, 0.9, 1.7, 3.0, 3.4];
+                tideChart.update();
+                
+                // Update summary cards
+                $('.high-tide').text('3.4m');
+                $('.low-tide').text('0.9m');
+                $('.summary-time').first().text('Today, 09:24 AM');
+                
+                // Reset button
+                $(this).html('<i class="fas fa-sync-alt"></i> Update Predictions');
+                
+                // Show success message
+                alert(`Tide predictions updated for ${location} (${dates})`);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

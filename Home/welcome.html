@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to KMFRI | Kenya Marine and Fisheries Research Institute</title>
+    <style>
+        :root {
+            --deep-blue: #005b96;
+            --light-teal: #00b4d8;
+            --seafoam: #90e0ef;
+            --sand: #f8f3e6;
+            --coral: #ff6b6b;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 91, 150, 0.7), rgba(0, 91, 150, 0.7)), url('images/ocean-research-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding:  20px;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-teal);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--deep-blue);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 50px auto;
+            max-width: 1000px;
+        }
+        
+        .quick-link-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            width: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .quick-link-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .quick-link-card i {
+            font-size: 2.5rem;
+            color: var(--light-teal);
+            margin-bottom: 15px;
+        }
+        
+        .stats {
+            background-color: var(--deep-blue);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .highlights {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .highlight-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+            align-items: center;
+        }
+        
+        .highlight-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .highlight-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero {
+                padding: 100px 20px;
+            }
+            
+            .highlight-card {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section class="hero">
+        <h1>Kenya Marine and Fisheries Research Institute</h1>
+        <p>Advancing scientific knowledge for sustainable management of Kenya's marine and freshwater resources since 1979</p>
+        <div>
+            <a href="about.html" class="btn">Learn About Us</a>
+            <a href="research.html" class="btn btn-outline">Our Research</a>
+        </div>
+    </section>
+    
+    <section class="quick-links">
+        <a href="research.html" class="quick-link-card">
+            <i class="fas fa-flask"></i>
+            <h3>Research Programs</h3>
+            <p>Explore our marine and freshwater research initiatives</p>
+        </a>
+        
+        <a href="publications.html" class="quick-link-card">
+            <i class="fas fa-book-open"></i>
+            <h3>Publications</h3>
+            <p>Access our scientific reports and findings</p>
+        </a>
+        
+        <a href="training.html" class="quick-link-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Training</h3>
+            <p>Capacity building programs in marine science</p>
+        </a>
+        
+        <a href="collaboration.html" class="quick-link-card">
+            <i class="fas fa-handshake"></i>
+            <h3>Collaborate</h3>
+            <p>Partner with us on research projects</p>
+        </a>
+    </section>
+    
+    <section class="stats">
+        <h2>KMFRI at a Glance</h2>
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">40+</div>
+                <div>Years of Research Excellence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div>Research Centers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div>Scientific Staff</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div>Publications Annually</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="highlights">
+        <h2 style="text-align: center; color: var(--deep-blue);">Featured Initiatives</h2>
+        
+        <div class="highlight-card">
+            <div class="highlight-img">
+                <img src="images/coral-restoration.jpg" alt="Coral Restoration">
+            </div>
+            <div>
+                <h3 style="color: var(--deep-blue);">Coral Reef Restoration</h3>
+                <p>Pioneering techniques to restore degraded coral reefs along Kenya's coast, working with local communities to enhance marine biodiversity and fisheries productivity.</p>
+                <a href="projects/coral-restoration.html" class="btn" style="display: inline-block; margin-top: 15px;">Learn More</a>
+            </div>
+        </div>
+        
+        <div class="highlight-card">
+            <div>
+                <h3 style="color: var(--deep-blue);">Sustainable Aquaculture</h3>
+                <p>Developing innovative aquaculture systems to enhance food security and livelihoods while reducing pressure on wild fish stocks.</p>
+                <a href="projects/aquaculture.html" class="btn" style="display: inline-block; margin-top: 15px;">Learn More</a>
+            </div>
+            <div class="highlight-img">
+                <img src="images/aquaculture.jpg" alt="Sustainable Aquaculture">
+            </div>
+        </div>
+    </section>
+</body>
+</html>

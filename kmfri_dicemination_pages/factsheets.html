@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Factsheets</title>
+    <style>
+        /* Reusing KMFRI styles with additions */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .facts-container {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            gap: 20px;
+        }
+        .facts-sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .facts-main {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .category-section {
+            margin-bottom: 20px;
+        }
+        .category-section h3 {
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 12px;
+            margin: 0 -12px;
+        }
+        .category-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .category-section li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .category-section a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .fact-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .fact-image {
+            height: 150px;
+            background-color: #eee;
+            position: relative;
+        }
+        .fact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .fact-details {
+            padding: 15px;
+        }
+        .fact-details h3 {
+            color: #004080;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .fact-meta {
+            color: #666;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.85em;
+        }
+        .btn-block {
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #0066cc;
+        }
+        .pagination a.active {
+            background-color: #0066cc;
+            color: white;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+   
+
+    <div class="page-title">
+        <div class="container">
+            <h1>KMFRI Factsheets</h1>
+        </div>
+    </div>
+
+    <div class="container facts-container">
+        <aside class="facts-sidebar">
+            <div class="search-box">
+                <h3>Search Factsheets</h3>
+                <input type="text" placeholder="Enter keywords...">
+                <button class="btn btn-block">Search</button>
+            </div>
+            
+            <div class="category-section">
+                <h3>By Topic</h3>
+                <ul>
+                    <li><a href="#">Marine Species</a></li>
+                    <li><a href="#">Fisheries</a></li>
+                    <li><a href="#">Aquaculture</a></li>
+                    <li><a href="#">Ecosystems</a></li>
+                    <li><a href="#">Climate Change</a></li>
+                    <li><a href="#">Coastal Management</a></li>
+                </ul>
+            </div>
+            
+            <div class="category-section">
+                <h3>By Format</h3>
+                <ul>
+                    <li><a href="#">Species Profiles</a></li>
+                    <li><a href="#">How-To Guides</a></li>
+                    <li><a href="#">Policy Briefs</a></li>
+                    <li><a href="#">Infographics</a></li>
+                </ul>
+            </div>
+            
+            <div class="category-section">
+                <h3>By Audience</h3>
+                <ul>
+                    <li><a href="#">Fishermen</a></li>
+                    <li><a href="#">Farmers</a></li>
+                    <li><a href="#">Students</a></li>
+                    <li><a href="#">Policy Makers</a></li>
+                    <li><a href="#">General Public</a></li>
+                </ul>
+            </div>
+            
+            <div class="category-section">
+                <h3>Most Popular</h3>
+                <ul>
+                    <li><a href="#">Nile Perch Facts</a></li>
+                    <li><a href="#">Seaweed Farming Guide</a></li>
+                    <li><a href="#">Mangrove Conservation</a></li>
+                    <li><a href="#">Coral Reef Protection</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <main class="facts-main">
+            <h2>Featured Factsheets</h2>
+            
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-image">
+                        <img src="fish-species.jpg" alt="Fish Species">
+                    </div>
+                    <div class="fact-details">
+                        <h3>Nile Perch (Lates niloticus)</h3>
+                        <div class="fact-meta">
+                            <span>Species Profile</span> | 
+                            <span>2 pages</span>
+                        </div>
+                        <p>Key facts about biology, distribution, and economic importance of Nile perch in Lake Victoria.</p>
+                        <a href="#" class="btn btn-block">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-image">
+                        <img src="seaweed-farming.jpg" alt="Seaweed Farming">
+                    </div>
+                    <div class="fact-details">
+                        <h3>Seaweed Farming Guide</h3>
+                        <div class="fact-meta">
+                            <span>How-To Guide</span> | 
+                            <span>4 pages</span>
+                        </div>
+                        <p>Step-by-step guide to establishing and maintaining a seaweed farm in Kenya.</p>
+                        <a href="#" class="btn btn-block">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-image">
+                        <img src="mangroves.jpg" alt="Mangroves">
+                    </div>
+                    <div class="fact-details">
+                        <h3>Mangrove Conservation</h3>
+                        <div class="fact-meta">
+                            <span>Ecosystem Factsheet</span> | 
+                            <span>3 pages</span>
+                        </div>
+                        <p>Importance of mangroves, threats they face, and community conservation approaches.</p>
+                        <a href="#" class="btn btn-block">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-image">
+                        <img src="fishing-gear.jpg" alt="Fishing Gear">
+                    </div>
+                    <div class="fact-details">
+                        <h3>Selective Fishing Gear</h3>
+                        <div class="fact-meta">
+                            <span>Fisheries Factsheet</span> | 
+                            <span>2 pages</span>
+                        </div>
+                        <p>Guide to fishing gear that reduces bycatch and environmental impacts.</p>
+                        <a href="#" class="btn btn-block">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-image">
+                        <img src="coral-reef.jpg" alt="Coral Reef">
+                    </div>
+                    <div class="fact-details">
+                        <h3>Coral Reef Protection</h3>
+                        <div class="fact-meta">
+                            <span>Conservation Brief</span> | 
+                            <span>3 pages</span>
+                        </div>
+                        <p>Actions individuals and communities can take to protect coral reef ecosystems.</p>
+                        <a href="#" class="btn btn-block">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-image">
+                        <img src="aquaponics.jpg" alt="Aquaponics">
+                    </div>
+                    <div class="fact-details">
+                        <h3>Small-Scale Aquaponics</h3>
+                        <div class="fact-meta">
+                            <span>How-To Guide</span> | 
+                            <span>4 pages</span>
+                        </div>
+                        <p>Basic setup and maintenance of backyard aquaponics systems for food production.</p>
+                        <a href="#" class="btn btn-block">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#">&laquo; Previous</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next &raquo;</a>
+            </div>
+        </main>
+    </div>
+
+    

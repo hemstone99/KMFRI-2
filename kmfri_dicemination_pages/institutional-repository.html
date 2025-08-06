@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMFRI Institutional Repository</title>
+    <style>
+        /* Reusing KMFRI styles from previous template */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 0;
+        }
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-menu {
+            background-color: #004080;
+            padding: 10px 0;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page-title {
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .page-title h1 {
+            color: #0066cc;
+            margin: 0;
+        }
+        .repository-container {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            gap: 20px;
+        }
+        .sidebar {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .main-content {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .search-box button {
+            padding: 10px 15px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        .filter-section h3 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .filter-section label {
+            display: block;
+            margin: 10px 0;
+        }
+        .result-item {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .result-item h3 {
+            color: #0066cc;
+            margin-bottom: 5px;
+        }
+        .result-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #0066cc;
+        }
+        .pagination a.active {
+            background-color: #0066cc;
+            color: white;
+        }
+        .footer {
+            background-color: #004080;
+            color: white;
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="page-title">
+        <div class="container">
+            <h1>KMFRI Institutional Repository</h1>
+        </div>
+    </div>
+
+    <div class="container repository-container">
+        <aside class="sidebar">
+            <div class="search-box">
+                <h3>Search Repository</h3>
+                <input type="text" placeholder="Enter search terms...">
+                <button>Search</button>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Filter By</h3>
+                <div>
+                    <h4>Resource Type</h4>
+                    <label><input type="checkbox"> Research Papers</label>
+                    <label><input type="checkbox"> Technical Reports</label>
+                    <label><input type="checkbox"> Theses</label>
+                    <label><input type="checkbox"> Conference Papers</label>
+                </div>
+                
+                <div>
+                    <h4>Year</h4>
+                    <label><input type="checkbox"> 2020-2023</label>
+                    <label><input type="checkbox"> 2015-2019</label>
+                    <label><input type="checkbox"> 2010-2014</label>
+                </div>
+                
+                <div>
+                    <h4>Subject</h4>
+                    <label><input type="checkbox"> Marine Ecology</label>
+                    <label><input type="checkbox"> Fisheries</label>
+                    <label><input type="checkbox"> Aquaculture</label>
+                    <label><input type="checkbox"> Climate Change</label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Advanced Search</h3>
+                <label>Author: <input type="text"></label>
+                <label>Title: <input type="text"></label>
+                <label>Keywords: <input type="text"></label>
+                <button class="btn">Apply Filters</button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <h2>Recent Additions</h2>
+            
+            <div class="result-item">
+                <h3>Assessment of Coral Reef Health Along the Kenyan Coast</h3>
+                <div class="result-meta">
+                    <span>Authors: M. Juma, L. Wambua, P. Otieno</span> | 
+                    <span>Type: Research Paper</span> | 
+                    <span>Year: 2023</span>
+                </div>
+                <p>This study evaluates the current status of coral reefs in marine protected areas and identifies key threats to reef ecosystems.</p>
+                <a href="#" class="btn">View Details</a>
+                <a href="#" class="btn">Download</a>
+            </div>
+            
+            <div class="result-item">
+                <h3>Socio-Economic Impacts of Beach Management Units in Kenya</h3>
+                <div class="result-meta">
+                    <span>Authors: S. Achieng, J. Mwangi</span> | 
+                    <span>Type: Technical Report</span> | 
+                    <span>Year: 2022</span>
+                </div>
+                <p>An analysis of how community-based beach management units have affected livelihoods of coastal communities.</p>
+                <a href="#" class="btn">View Details</a>
+                <a href="#" class="btn">Download</a>
+            </div>
+            
+            <div class="result-item">
+                <h3>Genetic Diversity of Nile Perch in Lake Victoria</h3>
+                <div class="result-meta">
+                    <span>Authors: K. Onyango, P. Kamau (MSc Thesis)</span> | 
+                    <span>Type: Thesis</span> | 
+                    <span>Year: 2021</span>
+                </div>
+                <p>Molecular analysis of Nile perch populations across different regions of Lake Victoria.</p>
+                <a href="#" class="btn">View Details</a>
+                <a href="#" class="btn">Download</a>
+            </div>
+            
+            <div class="pagination">
+                <a href="#">&laquo; Previous</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next &raquo;</a>
+            </div>
+        </main>
+    </div>
+
+  
+</body>
+</html>

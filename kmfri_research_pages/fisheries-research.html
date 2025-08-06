@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Fisheries Research | KMFRI</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="page-container">
+    <section class="research-category">
+      <h1>Fisheries Research</h1>
+      <div class="hero-image">
+        <img src="images/fisheries-research-hero.jpg" alt="Fisheries Research at KMFRI"/>
+      </div>
+      <p>KMFRI’s Fisheries Research program spans both inland and marine environments. The focus is on improving the understanding, management, and sustainability of fisheries resources across Kenya’s lakes, rivers, and coastal waters.</p>
+    </section>
+
+    <section class="research-details">
+      <h2>Research Areas</h2>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <img src="images/inland-fisheries.jpg" alt="Inland Fisheries"/>
+          <h3>Inland Fisheries</h3>
+          <p>Studies on stock dynamics in Lake Victoria, Lake Turkana, and other freshwater bodies.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/marine-fisheries.jpg" alt="Marine Fisheries"/>
+          <h3>Marine Fisheries</h3>
+          <p>Monitoring catch trends, fish species diversity, and exploitation levels along the coast.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/post-harvest.jpg" alt="Post-Harvest Technologies"/>
+          <h3>Post-Harvest</h3>
+          <p>Innovations in fish handling, processing, and packaging to reduce losses and add value.</p>
+        </div>
+        <div class="focus-card">
+          <img src="images/fish-ecology.jpg" alt="Fish Ecology"/>
+          <h3>Fish Ecology</h3>
+          <p>Research on habitat use, spawning grounds, and migration patterns of key species.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="achievements">
+      <h2>Key Achievements</h2>
+      <ul>
+        <li>Annual fish stock assessments published for inland and marine zones</li>
+        <li>Fishery catch data collected at 50+ landing sites countrywide</li>
+        <li>Resource maps developed to support sustainable harvest plans</li>
+      </ul>
+    </section>
+
+    <section class="image-gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="images/gallery-fish1.jpg" alt="Landing site survey"/>
+        <img src="images/gallery-fish2.jpg" alt="Fish stock monitoring"/>
+        <img src="images/gallery-fish3.jpg" alt="Post-harvest technology demo"/>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
+
+<!-- <style> -->
+    <style>
+        /* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f9fc;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* MAIN CONTAINER */
+main.page-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+  color: #004080;
+  margin-bottom: 1rem;
+}
+
+/* HERO IMAGE */
+.hero-image img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+}
+
+/* GENERAL TEXT */
+.research-category p,
+.research-details p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* GRID LAYOUT FOR FOCUS AREAS */
+.focus-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1rem;
+}
+
+.focus-card {
+  background: #ffffff;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,64,128,0.05);
+}
+
+.focus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,64,128,0.1);
+}
+
+.focus-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.focus-card h3 {
+  color: #004080;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* ACHIEVEMENTS SECTION */
+.achievements {
+  margin-top: 2rem;
+}
+
+.achievements ul {
+  padding-left: 1.25rem;
+  margin-top: 1rem;
+  list-style-type: disc;
+}
+
+.achievements li {
+  margin-bottom: 0.5rem;
+}
+
+/* IMAGE GALLERY */
+.image-gallery {
+  margin-top: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 600px) {
+  .focus-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
