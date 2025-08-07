@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuBar.addEventListener('click', () => {
         navLinkMenu.classList.toggle('open-menu');
-        menuBar.classList.toggle('fa-xmark');
+        menuBar.classList.toggle('fa-close');
 
     });
     // Set current year in footer
