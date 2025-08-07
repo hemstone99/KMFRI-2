@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const menuBar = document.querySelector('.fa-bars');
     const navLinkMenu = document.querySelector('nav');  
-
+    const menuLink=document.querySelector(".nav-links");
     menuBar.addEventListener('click', () => {
         navLinkMenu.classList.toggle('open-menu');
         menuBar.classList.toggle('fa-close');
-
+           menuLink.classList.toggle("open-links")
     });
     // Set current year in footer
     const currentYearSpan = document.getElementById('current-year');
