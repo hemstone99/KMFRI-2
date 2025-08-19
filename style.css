@@ -1221,211 +1221,24 @@ footer {
     }
 }
 
-/* Add to your style.css for KEFRI-style cards under the background video */
-.kefri-style-cards-row {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 32px;
-    margin: 32px auto 0 auto;
-    max-width: 1200px;
-    padding: 0 16px;
-    overflow-x: auto;
-}
 
-.kefri-card {
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(0, 60, 80, 0.10);
-    width: 180px;
-    min-width: 160px;
-    max-width: 200px;
+.kefri-style-cards-row{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.2s, transform 0.2s;
-    cursor: pointer;
-    overflow: hidden;
-    padding:10px;
-}
-
-.kefri-card:hover {
-    box-shadow: 0 8px 32px rgba(0, 60, 80, 0.18);
-    transform: translateY(-6px) scale(1.04);
-    border-color: #006633;
-}
-
-.kefri-card-img {
-    width: 100%;
-    height: 160px;
-    /* Increased height */
-    background: #eaf6f0;
-    display: flex;
+    gap: 10px;
+    margin:10px auto;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
-
-.kefri-card-img img {
+.kefri-style-cards-row img{
+    width:300px;
+    height: 200px;
+}
+.kefri-card-image{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    transition: transform 0.2s;
 }
-
-.kefri-card-title {
-    font-size: 1.05em;
-    font-weight: 600;
-    color: #f2f5f7;
-    text-align: center;
-    background: #3b51a3;
-    width: 100%;
-    border-bottom-left-radius: 14px;
-    border-bottom-right-radius: 14px;
-    letter-spacing: 0.01em;
-    margin: 10px;
-}
-
-@media (max-width: 900px) {
-    .kefri-style-cards-row {
-        gap: 18px;
-        max-width: 100vw;
-    }
-
-    .kefri-card {
-        width: 44vw;
-        min-width: 140px;
-        max-width: 220px;
-    }
-}
-
-@media (max-width: 600px) {
-    .kefri-style-cards-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        margin-top: 18px;
-    }
-
-    .kefri-card {
-        width: 95vw;
-        max-width: 340px;
-    }
-
-    .kefri-card-img {
-        height: 90px;
-    }
-}
-
-/* --- Marine Research Area Cards: Same style as KEFRI cards below hero --- */
-.marine-research-cards-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px;
-    margin: 32px auto 0 auto;
-    max-width: 1200px;
-    padding: 0 16px;
-}
-
-.marine-research-card {
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(0, 60, 80, 0.10);
-    width: 180px;
-    min-width: 160px;
-    max-width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.2s, transform 0.2s;
-    cursor: pointer;
-    overflow: hidden;
-    border: 1.5px solid hsl(200, 13%, 95%);
-}
-
-.marine-research-card:hover {
-    box-shadow: 0 8px 32px rgba(0, 60, 80, 0.18);
-    transform: translateY(-6px) scale(1.04);
-}
-
-.marine-research-card-img {
-    width: 100%;
-    height: 160px;
-    /* Increased height */
-    background: #eaf6f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.marine-research-card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    transition: transform 0.2s;
-}
-
-.marine-research-card-title {
-    font-size: 1.05em;
-    font-weight: 600;
-    color: #f2f5f7;
-    text-align: center;
-    padding: 16px 10px 14px 10px;
-    min-height: 56px;
-    background: #0634cd;
-
-    width: 100%;
-    border-bottom-left-radius: 14px;
-    border-bottom-right-radius: 14px;
-    letter-spacing: 0.01em;
-}
-
-@media (max-width: 900px) {
-    .marine-research-cards-row {
-        gap: 18px;
-        max-width: 100vw;
-    }
-
-    .marine-research-card {
-        width: 44vw;
-        min-width: 140px;
-        max-width: 220px;
-    }
-
-    .marine-research-card-img {
-        height: 120px;
-    }
-}
-
-@media (max-width: 600px) {
-    .marine-research-cards-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        margin-top: 18px;
-    }
-
-    .marine-research-card {
-        width: 95vw;
-        max-width: 340px;
-    }
-
-    .marine-research-card-img {
-        height: 90px;
-    }
-}
-
-
-
-
-
+.contact-card
 
 img {
     max-width: 100%;
@@ -2560,203 +2373,6 @@ footer {
 
     .home-general-info-section .home-column:last-child {
         flex-basis: 100%;
-    }
-}
-
-/* Add to your style.css for KEFRI-style cards under the background video */
-.kefri-style-cards-row {
-    display: flex;
-    align-items: center;
-    justify-content: baseline;
-    gap: 32px;
-    max-width: 1200px;
-    padding: 0 16px;
-}
-
-.kefri-card {
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(0, 60, 80, 0.10);
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.2s, transform 0.2s;
-    cursor: pointer;
-    padding: 0px 0px 0 10px;
-}
-
-.kefri-card:hover {
-    box-shadow: 0 8px 32px rgba(0, 60, 80, 0.18);
-    transform: translateY(-6px) scale(1.04);
-    border-color: #006633;
-}
-
-.kefri-card-img {
-    width: 100%;
-    height: 160px;
-    /* Increased height */
-    background: #eaf6f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.kefri-card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    transition: transform 0.2s;
-}
-
-.kefri-card-title {
-    font-size: 1.05em;
-    font-weight: 600;
-    color: #f2f5f7;
-    text-align: center;
-    padding: 16px 10px 14px 10px;
-    min-height: 56px;
-    background: #3b51a3;
-    width: 100%;
-    border-bottom-left-radius: 14px;
-    border-bottom-right-radius: 14px;
-    letter-spacing: 0.01em;
-    padding:10px ;
-   padding-top: 0;
-   margin-top: 0;
-}
-
-@media (max-width: 900px) {
-    .kefri-style-cards-row {
-        gap: 18px;
-        max-width: 100vw;
-    }
-
-    .kefri-card {
-        width: 44vw;
-        min-width: 140px;
-        max-width: 220px;
-    }
-}
-
-@media (max-width: 600px) {
-    .kefri-style-cards-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        margin-top: 18px;
-    }
-
-    .kefri-card {
-        width: 95vw;
-        max-width: 340px;
-    }
-
-    .kefri-card-img {
-        height: 90px;
-    }
-}
-
-/* --- Marine Research Area Cards: Same style as KEFRI cards below hero --- */
-.marine-research-cards-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px;
-    margin: 32px auto 0 auto;
-    max-width: 1200px;
-    padding: 0 16px;
-}
-
-.marine-research-card {
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(0, 60, 80, 0.10);
-    width: 180px;
-    min-width: 160px;
-    max-width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.2s, transform 0.2s;
-    cursor: pointer;
-    overflow: hidden;
-    border: 1.5px solid hsl(200, 13%, 95%);
-}
-
-.marine-research-card:hover {
-    box-shadow: 0 8px 32px rgba(0, 60, 80, 0.18);
-    transform: translateY(-6px) scale(1.04);
-    border-color: #006633;
-}
-
-.marine-research-card-img {
-    width: 100%;
-    height: 160px;
-    /* Increased height */
-    background: #eaf6f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.marine-research-card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    transition: transform 0.2s;
-}
-
-.marine-research-card-title {
-    font-size: 1.05em;
-    font-weight: 600;
-    color: #f2f5f7;
-    text-align: center;
-    padding: 16px 10px 14px 10px;
-    min-height: 56px;
-    background: #3b51a3;
-    width: 100%;
-    border-bottom-left-radius: 14px;
-    border-bottom-right-radius: 14px;
-    letter-spacing: 0.01em;
-}
-
-@media (max-width: 900px) {
-    .marine-research-cards-row {
-        gap: 18px;
-        max-width: 100vw;
-    }
-
-    .marine-research-card {
-        width: 44vw;
-        min-width: 140px;
-        max-width: 220px;
-    }
-
-    .marine-research-card-img {
-        height: 120px;
-    }
-}
-
-@media (max-width: 600px) {
-    .marine-research-cards-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        margin-top: 18px;
-    }
-
-    .marine-research-card {
-        width: 95vw;
-        max-width: 340px;
-    }
-
-    .marine-research-card-img {
-        height: 90px;
     }
 }
 
@@ -4330,75 +3946,89 @@ ul {
         border-radius: 50%;
     }
 }
-/*media (max-width:950px) {
-    #nav-links li{
-        right:-100px;
-    }
-}
 
-@media (max-width:895px) {
-    nav{
-        position: relative;
-        background: green;
-    }
-    #nav-links{
-        left:-50px;
-        position: absolute;
-    }
-        .logo-container {
-        position: absolute;
-        top: 10%;
-        left: 50px;
-        padding-left: 300px;
-    }
-}*/
 
-/*
-@media (max-width:750px) {
-    #nav-links{
-        left:-150px;
-    }
+/* news -----events------*/
+.news-event{
+    display: flex;
+     gap: 10px;
+     justify-content: space-around;
 }
+.news,.upcoming-events{
+    width: 50%;
+}
+.news{
+    background: none;
+}
+/* --- Marine Research Area Cards: Same style as KEFRI cards below hero --- */
 
-@media (max-width:700px) {
-    #nav-links{
-        left:-200px;
-    }
-}
-@media (max-width:690px) {
-    #nav-links{
-        left:-250px;
-    }
-        .logo-container {
-        position: absolute;
-        top: 10%;
-        left: 30px;
-        width: 300px;
-        height: fit-content;
-        img{
-            width: 100px;
-        }
-    }
-}
-@media (max-width:590px) {
-    #nav-links{
-        left:-300px;
-    }
-}
+.research{
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    position: relative;
+    top:-90px;
+    z-index: 1000;
+    gap:20px;
 
-@media (max-width:490px) {
-    #nav-links{
-        left:-450px;
-    }
+
 }
-@media (max-width:390px) {
-    #nav-links{
-        left:-550px;
-    }
+.content-block{
+    width: 90%;
+    padding: 10px;
+    background: #3b51a3;
+    margin:20px auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    position: relative;
+    z-index: 1;
+    top: -50px;
 }
-@media (max-width:290px) {
-    #nav-links{
-        left:-600px;
-    }
+.content-block h3,p{
+
+    color: white;
+}   
+.research .content-block p{
+    color: white;
+    font-size: 1rem;
 }
-*/
+.research .marine-research-cards-row{
+    display: flex;
+    gap: 20PX;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+    margin:20px auto;
+
+}
+.marine-research-card{
+    width:100%;
+    height: 100%;
+    box-shadow: 0PX 0px 10PX black;
+    transition: 0.4s ease-in-out;
+}
+.marine-research-card:hover{
+    transform: scale(1.05);
+    box-shadow: 0PX 0px 10PX rgb(248, 241, 241);
+}
+.marine-research-card-img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.marine-research-card-img img{
+    height:100%;
+    width: 100%;
+}
+.marine-research-card-title a{
+    color: white;
+    padding:10px;
+}
+.hero-section p{
+    font-size: 2rem;
+    width:100%;
+}
